@@ -1,7 +1,11 @@
 let productController = {
     
     index: (req, res) =>{
-        res.render('index')
+        res.render('product')
+    },
+
+    add: (req, res) =>{
+        res.render('product-add')
     },
 
 }

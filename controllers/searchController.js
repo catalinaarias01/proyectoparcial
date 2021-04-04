@@ -1,6 +1,6 @@
 let searchController = {
     index: (req,res) =>{
-        res.render('index')
+        res.render('search-results')
     },
 }
 module.exports = searchController;
