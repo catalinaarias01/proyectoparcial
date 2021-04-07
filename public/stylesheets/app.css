@@ -180,10 +180,13 @@ hr {
   overflow: hidden;
   transition: 300ms;
   margin: 20px 0;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .product-box a {
-  display: block;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .product-box_image {
@@ -209,11 +212,12 @@ hr {
   font-weight: 300;
   color: var(--green);
   margin: 0 0 0 10px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .product-box_data p {
   font-size: 1.5em;
-  width: 100%;
   color: var(--gray);
   margin: 0;
   height: 0;
