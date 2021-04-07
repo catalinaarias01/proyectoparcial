@@ -20,7 +20,7 @@ const productos = [
     {
         id:2,
         nombre:"Flawless Finish Foundation",
-        descripcion: "La Flawless foundation es cremosa, ligera y libre de aceites. Se difumina facilmente con una brocha o esponjita y da un acabado semi-matte que dura todo el día. Sirve para todo tipo de piel!",
+        descripcion: "Cremosa, ligera y libre de aceites. Da un acabado semi-matte que dura todo el día. Sirve para todo tipo de piel!",
         seccion: "Rostro",
         marca: "e.l.f",
         img:"/images/products/flawlessFinishFoundation.jpg"
