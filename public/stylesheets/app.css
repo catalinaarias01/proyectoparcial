@@ -109,6 +109,9 @@ hr {
   cursor: pointer;
 }
 
+.logo{
+  width: 90%;
+}
 
 /*====== Main Navbar ======*/
 .btn-toggle-navbar {
@@ -154,7 +157,7 @@ hr {
 
 /*====== Banner ======*/
 .banner {
-  background-image: url(/images/portada-banner1.png);
+  background-image: url(/images/portada-banner3.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -162,15 +165,18 @@ hr {
 
 
 /*====== Products ======*/
+
 .products-wrapper {
   margin-top: 30px;
   margin-bottom: 30px;
 }
 
 .products-title {
-  font-size: 2.4em;
-  font-weight: 400;
-  color: var(--gray);
+  font-size: 3.5em;
+  font-weight: BOLD;
+  color: black;
+  font-family: "Pavanam";
+  text-transform: uppercase;
 }
 
 .product-box {
@@ -201,9 +207,10 @@ hr {
 }
 
 .product-box_data h2 {
-  font-size: 2.4em;
-  font-weight: 300;
-  margin: 0;
+    margin: 0;
+    font-family: "ABeeZee";
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
 .product-box_data span {
@@ -222,6 +229,7 @@ hr {
   height: 0;
   transition: 300ms;
   overflow: hidden;
+  font-family: "Sen";
 }
 
 .product-box_data i {
@@ -278,14 +286,17 @@ hr {
 
 .footer-data h2 {
   color: var(--gray);
-  font-size: 2.4em;
+  font-size: 2em;
   font-weight: 400;
+  font-family: "ABeeZee";
+  text-transform: uppercase;
 }
 
 .footer-data p {
   color: var(--gray);
-  font-size: 1.5em;
+  font-size: 1.4em;
   font-weight: 300;
+  font-family: "Sen";
 }
 
 .sub-footer {
@@ -297,6 +308,18 @@ hr {
   margin: 0;
   color: var(--gray);
   padding: 15px 0;
+}
+
+.fa-gift:before{
+  color: #fcccd4;
+}
+
+.fa-credit-card:before{
+  color: #fcccd4;
+}
+
+.fa-user-shield:before{
+  color: #fcccd4;
 }
 
 
@@ -328,6 +351,7 @@ hr {
   padding: 15px 15px 15px 40px;
   font-size: 1.8em;
   line-height: 1.5;
+  font-family: "Sen";
 }
 
 .product-detail-price {
@@ -424,6 +448,11 @@ hr {
 }
 .comments .user{
   font-size: 1.7em;
+  font-family: "Sen";
+}
+
+a{
+  font-family: "Cormorant SC";
 }
 
 /*====== Formularios ======*/
@@ -526,4 +555,5 @@ textarea.form-input {
     width: 95%;
     margin: auto;
   }
+
 }

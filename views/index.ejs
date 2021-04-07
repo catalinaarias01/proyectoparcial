@@ -10,7 +10,7 @@
 	
 	<!-- Banner -->
 	<div class="banner">
-		<img src="/images/portada-banner1.png" alt="Banner de bienvenida">
+		<img src="/images/portada-banner3.png" alt="Banner de bienvenida">
 	</div>
 	<!-- /Banner -->
 
@@ -24,7 +24,7 @@
 			
 			<!-- tiene que mostrar minimo 4-->
 			<% for(i=0; i < productos.length; i++){ %>
-				<div class="col-12 col-sm-6 col-lg-3">
+				<div class="col-12 col-sm-6 col-lg-3 product">
 					<section class="product-box">
 						<a href="/product/<%=productos[i].id %>">
 							<figure class="product-box_image">
@@ -51,7 +51,7 @@
 			</div>
 			
 			<% for(i=0;i < productos.length; i++){%>
-			<div class="col-12 col-sm-6 col-lg-3">
+			<div class="col-12 col-sm-6 col-lg-3 product">
 				<section class="product-box">
 					<a href="/product/<%=productos[i].id%>">
 						<figure class="product-box_image">
