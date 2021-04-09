@@ -1,4 +1,4 @@
-let loginController = {
+/* let loginController = {
 
     index: (req, res) =>{
         res.render('login')
@@ -14,5 +14,5 @@ let loginController = {
         },
     }
 }
-module.exports = loginController;
+module.exports = loginController; */
 
