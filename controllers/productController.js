@@ -19,9 +19,6 @@ let productController = {
         res.render('product', {productos:respuesta})
     },
 
-    add: (req, res) =>{
-        res.render('product-add')
-    },
 
 }
 

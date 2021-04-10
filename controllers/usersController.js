@@ -24,7 +24,15 @@ let usersController = {
     index: (req, res) =>{
         res.render('register')
     }
-    }
+    },
+
+    products: {
+        add: (req, res) =>{
+            const username = req.body.usuario;
+            res.render('product-add', {username:username})
+        },
+        
+    },
 
 
     

@@ -17,4 +17,6 @@ router.get('/profile/edit', usersController.profile.edit);
 
 router.get('/register', usersController.register.index);
 
+router.get('/addproducts', usersController.products.add);
+
 module.exports = router;
