@@ -17,7 +17,7 @@
 			</div>
 			<!-- Show the "ultimos" products -->
 
-			<form method="POST" action="/register/profile"> 
+			<!--<form method="POST" action="/register/profile"> 
 				<label for="nombre">Nombre:</label><br>
   					<input type="text" id="nombre" name="nombre"><br>
   				<label for="apellido">Apellido:</label><br>
@@ -29,7 +29,41 @@
 				<label for="contraseña">Contraseña:</label><br>
 					<input type="password" id="contraseñña" name="contraseña"><br>
 				<input type="submit" value="Registrarse">
-			</form>
+			</form> -->
+			<div class="container products-wrapper">
+				<div class="row">
+					<div class="col-12">
+						<h2 class="products-title">Registrarse</h2>
+					</div>
+
+			<form>
+				<div class="mb-3">
+					<label for="nombre" class="form-label">Nombre:</label>
+					<input type="text" class="form-control" id="nombre">
+				  </div>
+				  <div class="mb-3">
+					<label for="apellido" class="form-label">Apellido:</label>
+					<input type="text" class="form-control" id="apellido">
+				  </div>
+				<div class="mb-3">
+				  <label for="exampleInputEmail1" class="form-label">Email:</label>
+				  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+				  <div id="emailHelp" class="form-text">Nunca compartiremos tu email con alguien mas.</div>
+				</div>
+				<div class="mb-3">
+					<label for="usuario" class="form-label">Usuario:</label>
+					<input type="text" class="form-control" id="usuario">
+				  </div>
+				<div class="mb-3">
+				  <label for="exampleInputPassword1" class="form-label">Contraseña:</label>
+				  <input type="password" class="form-control" id="exampleInputPassword1">
+				</div>
+				<div class="mb-3">
+					<label for="exampleInputPassword1" class="form-label">Repetir contraseña:</label>
+					<input type="password" class="form-control" id="exampleInputPassword1">
+				  </div>
+				<button type="submit" value="Registrarse" class="btn btn-primary">Submit</button>
+			  </form>
 
 
 	<!-- footer -->

@@ -456,11 +456,30 @@ a{
 }
 
 /*====== Formularios ======*/
+.products-title{
+  display: block;
+  text-align: center;
+ 
+}
+form{
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    background-color:white;
+    text-align:left;
+}
+.mb-3 {
+  display: block;
+  text-align: center;
+  font-size: 1.6em;
+}
+
 .form-label {
   display: inline-block;
-  font-size: 1.6em;
+
   margin: 10px 0;
 }
+
 
 .form-input {
   display: block;
@@ -483,6 +502,10 @@ textarea.form-input {
   min-height: 140px;
   resize: vertical;
   padding: 15px;
+} 
+#emailHelp{
+  color: grey;
+  font-size: smaller;
 }
 
 /*====== Profile ======*/
