@@ -11,15 +11,33 @@
 	<div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
-				<h2 class="products-title"></h2>
+				<h2 class="products-title">Agregar producto</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
-			<h2 class="col-12"> <i>///////////////////////////////////////// <br> Acá va el formulario para agregar prodcutos al catálogo. <br>
-			Debe cumplir con los puntos de la consigna y ser coherente con la tabla de la base de datos. <br>
-			Eliminen estás líneas y coloquen el formulario. <br>
-			Recuerden todo lo que necesita tanto la etiqueta form como los campos input para operar correctamtente</i> <br>
-			////////////////
-			</h2>
+			<form>
+				<div class="mb-3">
+					<label for="nombreProducto" class="form-label">Nombre del producto:</label>
+					<input type="text" class="form-control" id="nombreProducto">
+				  </div>
+				  <div class="mb-3">
+					<label for="descripcion" class="form-label">Descripción:</label>
+					<input type="text" class="form-control" id="descripcion">
+				  </div>
+				<div class="mb-3">
+				  <label for="seccion" class="form-label">Sección:</label>
+				  <input type="text" class="form-control" id="seccion">
+				  <div id="seccionHelp" class="form-text">Secciones: brochas, ojos, labios y rostro</div>
+				</div>
+				<div class="mb-3">
+					<label for="marca" class="form-label">Marca:</label>
+					<input type="text" class="form-control" id="marca">
+				</div>
+				<div class="mb-3">
+					<label for="imagen" class="form-label">Imagen:</label>
+					<input type="image" class="form-control" id="imagen">
+				</div>
+				<button type="submit" value="Registrarse" class="btn btn-primary">Submit</button>
+			  </form>
 
 
 	<!-- footer -->
