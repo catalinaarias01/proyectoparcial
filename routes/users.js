@@ -2,12 +2,13 @@ var express = require('express');
 var router = express.Router();
 const app = express()
 const usersController = require('../controllers/usersController')
+
 app.use(express.urlencoded({
     extended: true
  }))
 
 /* GET users listing. */
-router.get('/', usersController.index);
+/* router.get('/', usersController.index); */
 
 router.get('/login', usersController.login.index);
 

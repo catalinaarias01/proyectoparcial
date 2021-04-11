@@ -1,8 +1,8 @@
 let usersController = {
 
-    index: (req, res) =>{
+/*     index: (req, res) =>{
         res.render('index')
-    },
+    }, */
 
     login: {
         index: (req, res) =>{
@@ -16,6 +16,7 @@ let usersController = {
             res.render('profile', {username:username})
         },
         edit: (req, res) =>{
+
             res.render('profile-edit')
         },
     },
@@ -28,8 +29,7 @@ let usersController = {
 
     products: {
         add: (req, res) =>{
-            const username = req.body.usuario;
-            res.render('product-add', {username:username})
+            res.render('product-add')
         },
         
     },
