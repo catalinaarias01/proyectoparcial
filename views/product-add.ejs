@@ -23,15 +23,20 @@
 					<label for="descripcion" class="form-label">Descripción:</label>
 					<input type="text" class="form-control" id="descripcion">
 				  </div>
-				<div class="mb-3">
-				  <label for="seccion" class="form-label">Sección:</label>
-				  <input type="text" class="form-control" id="seccion">
-				  <div id="seccionHelp" class="form-text">Secciones: brochas, ojos, labios y rostro</div>
-				</div>
-				<div class="mb-3">
+				  <div class="mb-3">
 					<label for="marca" class="form-label">Marca:</label>
 					<input type="text" class="form-control" id="marca">
 				</div>
+				<div class="mb-3">
+				  <label for="seccion" class="form-label">Sección:</label><br>
+				  <select id="seccion" name="seccion">
+					<option value="brochas">Brochas</option>
+					<option value="ojos">Ojos</option>
+					<option value="labios">Labios</option>
+					<option value="rostro">Rostro</option>
+				  </select>
+				</div>
+				
 				<div class="mb-3">
 					<label for="imagen" class="form-label">Imagen:</label>
 					<input type="image" class="form-control" id="imagen">
