@@ -12,7 +12,7 @@ app.use(express.urlencoded({
 
 router.get('/login', usersController.login.index);
 
-router.post('/profile', usersController.profile.index);
+router.get('/profile', usersController.profile.index);
 
 router.get('/profile/edit', usersController.profile.edit);
 
