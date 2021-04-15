@@ -45,7 +45,10 @@ let usersController = {
         add: (req, res) =>{
             res.render('product-add')
         },
-        
+        edit: (req, res) =>{
+
+            res.render('product-edit')
+        },
     },
 
 

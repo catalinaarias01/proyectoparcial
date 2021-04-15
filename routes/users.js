@@ -20,4 +20,6 @@ router.get('/register', usersController.register.index);
 
 router.get('/addproducts', usersController.products.add);
 
+router.get('/editproducts', usersController.products.edit);
+
 module.exports = router;
