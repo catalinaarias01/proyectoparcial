@@ -12,8 +12,8 @@ let usersController = {
 
     profile: {
         index: (req, res) =>{
-            const username = req.body.usuario;
-            res.render('profile', {username:username})
+           /* const username = req.body.usuario;*/
+            res.render('profile')
         },
         edit: (req, res) =>{
 
