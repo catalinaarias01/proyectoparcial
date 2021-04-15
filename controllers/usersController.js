@@ -1,3 +1,16 @@
+
+const productos = require('../data/productos');
+
+let indexController = {
+    
+    index: (req, res) =>{
+        res.render('index', {productos:productos})
+    },
+
+}
+
+module.exports = indexController;
+
 let usersController = {
 
 /*     index: (req, res) =>{
@@ -12,8 +25,9 @@ let usersController = {
 
     profile: {
         index: (req, res) =>{
+        
            /* const username = req.body.usuario;*/
-            res.render('profile')
+            res.render('profile', {productos:productos});
         },
         edit: (req, res) =>{
 
