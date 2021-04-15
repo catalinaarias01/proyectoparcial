@@ -1,5 +1,4 @@
 //Acá debería haber un array con varios objetos (producto1: nombre, descripción, link a imagen)
-
 const productos = [
     {
         id:0,
