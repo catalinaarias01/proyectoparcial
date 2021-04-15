@@ -10,13 +10,14 @@ let productController = {
             }); */
 
             let respuesta = [];
+            let respuestaComentarios = [];
             for (let i = 0; i < productos.length; i++) {
                 if (productos[i].id == productID) {
                     respuesta.push(productos[i]);
+                    respuestaComentarios.push(productos[i].comentariosUsuario)
                 }
             } 
-
-        res.render('product', {productos:respuesta})
+        res.render('product', {productos:respuesta, comentarios:respuestaComentarios})
     },
 
 

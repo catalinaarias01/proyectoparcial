@@ -1,6 +1,6 @@
 const usuarios = require('./usuarios');
 
-const comentarios = [
+module.exports =  comentarios = [
     {
         id:0,
         texto:"Que lindo",
@@ -66,9 +66,9 @@ const comentarios = [
         texto:"EXCELENTE",
         fecha_creacion:new Date(),
         usuarios:usuarios[1]
-    },
+    }
     
-   
 ]
 
-module.export = comentarios;
+
+

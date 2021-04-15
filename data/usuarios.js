@@ -1,4 +1,6 @@
-const usuarios = [
+const { urlencoded } = require("express");
+
+module.exports =  usuarios = [
     {
         id:0,
         nombre:"Cata",
@@ -7,47 +9,52 @@ const usuarios = [
         mail:"cataquian@gmail.com",
         edad:90,
         contraseña:"gato",
-        fecha_creación: new Date()
+        fecha_creación: new Date(),
+        img_src:'/images/users/justinuser.jpeg'
     },
     {
         id:1,
-        nombre:"Cata",
-        apellido:"Quian",
-        usuario:"mariapena",
-        mail:"cataquian@gmail.com",
+        nombre:"Nacho",
+        apellido:"Fernandez",
+        usuario:"nachitofer",
+        mail:"nachito@gmail.com",
         edad:90,
         contraseña:"gato",
-        fecha_creación: new Date()
+        fecha_creación: new Date(),
+        img_src:'/images/users/justinuser.jpeg'
     },
     {
         id:2,
-        nombre:"Cata",
+        nombre:"Eduardo",
         apellido:"Quian",
-        usuario:"cataarias",
+        usuario:"eduardofran",
         mail:"cataquian@gmail.com",
         edad:90,
         contraseña:"gato",
-        fecha_creación: new Date()
+        fecha_creación: new Date(),
+        img_src:'/images/users/justinuser.jpeg'
     },
     {
         id:3,
-        nombre:"Cata",
-        apellido:"Quian",
+        nombre:"Feli",
+        apellido:"Rattagan",
         usuario:"felirattagan",
         mail:"cataquian@gmail.com",
         edad:90,
         contraseña:"gato",
-        fecha_creación: new Date()
+        fecha_creación: new Date(),
+        img_src:'/images/users/justinuser.jpeg'
     },
     {
         id:4,
         nombre:"Cata",
-        apellido:"Quian",
-        usuario:"fedeprieto",
+        apellido:"Arias",
+        usuario:"catitaarias",
         mail:"cataquian@gmail.com",
         edad:90,
         contraseña:"gato",
-        fecha_creación: new Date()
+        fecha_creación: new Date(),
+        img_src:'/images/users/justinuser.jpeg'
     },
 ]
 

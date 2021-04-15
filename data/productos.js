@@ -1,5 +1,7 @@
-//Acá debería haber un array con varios objetos (producto1: nombre, descripción, link a imagen)
 const comentarios = require('./comentarios');
+const comentariosTexto = comentarios[0].texto;
+const comentariosTexto2 = comentarios[1].texto;
+//console.log(comentariosTexto)
 
 
 const productos = [
@@ -10,15 +12,25 @@ const productos = [
         seccion: "Brochas",
         marca: "Morphe",
         img:"/images/products/brochas-morphe.jpg",
-        comentarios : [
+        comentariosUsuario : [
             {
-                texto:comentarios[0],
-                usuario: comentarios[0],
+                texto:comentarios[3].texto, 
+                usuarios:comentarios[3].usuarios
             },
             {
-                texto:comentarios[1],
-                usuario: comentarios[2]
+                texto:comentarios[0].texto, 
+                usuarios:comentarios[0].usuarios
             },
+            {
+                texto:comentarios[1].texto, 
+                usuarios:comentarios[1].usuarios
+            },
+            {
+                texto:comentarios[4].texto, 
+                usuarios:comentarios[4].usuarios
+            }
+            
+
         ]
     },
         
@@ -30,7 +42,20 @@ const productos = [
         seccion: "Ojos",
         marca: "Rude Cosmetics",
         img:"/images/products/cestlavie-paleta.jpg",
-        comentarios : [comentarios[3], comentarios[4], comentarios[5]]
+        comentariosUsuario : [
+            {
+                texto:comentarios[1].texto, 
+                usuarios:comentarios[1].usuarios
+            },
+            {
+                texto:comentarios[9].texto, 
+                usuarios:comentarios[9].usuarios
+            },
+            {
+                texto:comentarios[7].texto, 
+                usuarios:comentarios[7].usuarios
+            }
+        ]
     },
     {
         id:2,
@@ -39,7 +64,24 @@ const productos = [
         seccion: "Rostro",
         marca: "e.l.f",
         img:"/images/products/flawlessFinishFoundation.jpg",
-        comentarios : [comentarios[6], comentarios[7], comentarios[8]]
+        comentariosUsuario : [
+            {
+                texto:comentarios[0].texto, 
+                usuarios:comentarios[0].usuarios
+            },
+            {
+                texto:comentarios[5].texto, 
+                usuarios:comentarios[5].usuarios
+            },
+            {
+                texto:comentarios[6].texto, 
+                usuarios:comentarios[6].usuarios
+            },
+            {
+                texto:comentarios[2].texto, 
+                usuarios:comentarios[2].usuarios
+            }
+        ]
     },
     {
         id:3,
@@ -48,7 +90,24 @@ const productos = [
         seccion: "Labios",
         marca: "ColourPop",
         img: "/images/products/ultraMatteLip.jpg",
-        comentarios : [comentarios[9], comentarios[10], comentarios[0]]
+        comentariosUsuario : [
+            {
+                texto:comentarios[4].texto, 
+                usuarios:comentarios[4].usuarios
+            },
+            {
+                texto:comentarios[3].texto, 
+                usuarios:comentarios[3].usuarios
+            },
+            {
+                texto:comentarios[9].texto, 
+                usuarios:comentarios[9].usuarios
+            },
+            {
+                texto:comentarios[10].texto, 
+                usuarios:comentarios[10].usuarios
+            }
+        ]
     },
     {
         id:4,
@@ -57,7 +116,24 @@ const productos = [
         seccion: "Labios",
         marca: "MAC",
         img:"/images/products/lustreLipstick.jpg",
-        comentarios : [comentarios[1], comentarios[2], comentarios[3]]
+        comentariosUsuario : [
+            {
+                texto:comentarios[3].texto, 
+                usuarios:comentarios[3].usuarios
+            },
+            {
+                texto:comentarios[0].texto, 
+                usuarios:comentarios[0].usuarios
+            },
+            {
+                texto:comentarios[1].texto, 
+                usuarios:comentarios[1].usuarios
+            },
+            {
+                texto:comentarios[4].texto, 
+                usuarios:comentarios[4].usuarios
+            }
+        ]
     },
     {
         id:5,
@@ -66,7 +142,24 @@ const productos = [
         seccion: "Rostro",
         marca: "e.l.f",
         img: "/images/products/porelessFacePrimer.jpg",
-        comentarios :[comentarios[4], comentarios[5], comentarios[6]]
+        comentariosUsuario : [
+            {
+                texto:comentarios[0].texto, 
+                usuarios:comentarios[0].usuarios
+            },
+            {
+                texto:comentarios[5].texto, 
+                usuarios:comentarios[5].usuarios
+            },
+            {
+                texto:comentarios[6].texto, 
+                usuarios:comentarios[6].usuarios
+            },
+            {
+                texto:comentarios[2].texto, 
+                usuarios:comentarios[2].usuarios
+            }
+        ]
     },
     {
         id:6,
@@ -75,7 +168,20 @@ const productos = [
         seccion: "Ojos",
         marca: "Laura Mercier",
         img: "/images/products/panoramicMascara.jpg",
-        comentarios : [comentarios[7], comentarios[8], comentarios[10]]
+        comentariosUsuario : [
+            {
+                texto:comentarios[1].texto, 
+                usuarios:comentarios[1].usuarios
+            },
+            {
+                texto:comentarios[9].texto, 
+                usuarios:comentarios[9].usuarios
+            },
+            {
+                texto:comentarios[7].texto, 
+                usuarios:comentarios[7].usuarios
+            }
+        ]
     },
     {
         id:7,
@@ -84,7 +190,24 @@ const productos = [
         seccion: "Brochas",
         marca: "Coastal Scents",
         img: "/images/products/powderBrush.jpg",
-        comentarios : [comentarios[1], comentarios[2], comentarios[3]]
+        comentariosUsuario : [
+            {
+                texto:comentarios[5].texto, 
+                usuarios:comentarios[5].usuarios
+            },
+            {
+                texto:comentarios[6].texto, 
+                usuarios:comentarios[6].usuarios
+            },
+            {
+                texto:comentarios[9].texto, 
+                usuarios:comentarios[9].usuarios
+            },
+            {
+                texto:comentarios[3].texto, 
+                usuarios:comentarios[3].usuarios
+            }
+        ]
     },
     {
        id:8,
@@ -93,7 +216,16 @@ const productos = [
        seccion: "Rostro",
        marca: "MAC",
        img: "/images/products/faceAndBody.jpg",
-       comentarios : [comentarios[4], comentarios[5], comentarios[6]]
+       comentariosUsuario : [
+        {
+            texto:comentarios[0].texto, 
+            usuarios:comentarios[0].usuarios
+        },
+        {
+            texto:comentarios[2].texto, 
+            usuarios:comentarios[2].usuarios
+        }
+    ]
     },
     {
         id:9,
@@ -102,7 +234,16 @@ const productos = [
         seccion: "Rostro",
         marca: "Benefit",
         img: "/images/products/hoolaMatteBronzer.jpg",
-        comentarios :[comentarios[7], comentarios[8], comentarios[9]]
+        comentariosUsuario : [
+            {
+                texto:comentarios[0].texto, 
+                usuarios:comentarios[0].usuarios
+            },
+            {
+                texto:comentarios[2].texto, 
+                usuarios:comentarios[2].usuarios
+            }
+        ]
     },
     {
         id:10,
@@ -111,7 +252,16 @@ const productos = [
         seccion: "Labios",
         marca: "Fenty Beauty",
         img: "/images/products/mattemoisellePlush.jpg",
-        comentarios : [comentarios[10], comentarios[2], comentarios[3]]
+        comentariosUsuario : [
+            {
+                texto:comentarios[0].texto, 
+                usuarios:comentarios[0].usuarios
+            },
+            {
+                texto:comentarios[2].texto, 
+                usuarios:comentarios[2].usuarios
+            }
+        ]
     },
     {
         id:11,
@@ -120,8 +270,21 @@ const productos = [
         seccion: "Ojos",
         marca: "Morphe",
         img: "/images/products/jamesCharlesPalette.jpg",
-        comentarios : [comentarios[4], comentarios[5], comentarios[7]]
+        comentariosUsuario : [
+            {
+                texto:comentarios[0].texto, 
+                usuarios:comentarios[0].usuarios
+            },
+            {
+                texto:comentarios[2].texto, 
+                usuarios:comentarios[2].usuarios
+            }
+        ]
     }
 ]
+
+/* console.log(productos[0].comentariosUsuario[1].texto)
+console.log(productos[0].comentariosUsuario[0].texto)
+console.log(productos[0].comentariosUsuario[0].usuarios.nombre) */
 
 module.exports = productos;

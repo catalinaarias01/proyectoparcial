@@ -24,50 +24,17 @@
 				</article>
 				<div class="col-12 col-lg-4">
 					<section class="comments">
-						<% for(i=0; i < productos[0].comentarios.length; i++){ %>
+
+						<% for(i=0; i < productos[0].comentariosUsuario.length; i++){ %>
 							<article>
-								<img src="https://via.placeholder.com/35" alt="">
+								<img src=<%=productos[0].comentariosUsuario[i].usuarios.img_src%> alt="">
 								<div class="data">
 									<p class="user">
-									<strong> <a href="/users/profile"><%=productos[0].comentarios[0].usuario%> </a> </strong>
-									 <%= productos[0].comentarios[i]%></p>
+									<strong> <a href="/users/profile"><%=productos[0].comentariosUsuario[i].usuarios.usuario%> </a> </strong>
+									<%=productos[0].comentariosUsuario[i].texto%></p>
 								</div>
 							</article>
 						<% } %>
-						<article>
-							<img src="https://via.placeholder.com/35" alt="">
-							<div class="data">
-								<p class="user">
-									<strong> <a href="/users/profile">Nombre usuario: </a> </strong>
-									Texto del comentario que escribió el usuario Lorem ipsum dolor sit amet consectetur.</p>
-							</div>
-						</article>
-						<article>
-							<img src="https://via.placeholder.com/35" alt="">
-							<div class="data">
-								<p class="user">
-									<strong> <a href="/users/profile">Nombre usuario: </a> </strong>
-									Texto del comentario que escribió el usuario Lorem ipsum dolor sit amet consectetur adipisicing elit.
-									</p>
-							</div>
-						</article>
-						<article>
-							<img src="https://via.placeholder.com/35" alt="">
-							<div class="data">
-								<p class="user">
-									<strong> <a href="/users/profile">Nombre usuario: </a> </strong>
-									Texto del comentario que escribió el usuario Lorem ipsum dolor sit amet.</p>
-							</div>
-						</article>
-						<article>
-							<img src="https://via.placeholder.com/35" alt="">
-							<div class="data">
-								<p class="user">
-									<strong> <a href="/users/profile">Nombre usuario: </a> </strong>
-									Texto del comentario que escribió el usuario Lorem ipsum dolor sit amet consectetur adipisicing elit.
-									Tempora doloribus enim aspernatur fugit corrupti suscipit sit dolore</p>
-							</div>
-						</article>
 
 					</section>
 					<form class="form agregar" action="" method="GET">
