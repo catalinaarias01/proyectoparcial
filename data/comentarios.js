@@ -23,49 +23,61 @@ module.exports =  comentarios = [
         id:3,
         texto:"Muy bueno",
         fecha_creacion:new Date(),
-        usuarios:usuarios[1]
+        usuarios:usuarios[4]
     },
     {
         id:4,
         texto:"No me gustó y no lo recomiendo",
         fecha_creacion:new Date(),
-        usuarios:usuarios[4]
+        usuarios:usuarios[5]
     },
     {
         id:5,
         texto:"Excelente calidad",
         fecha_creacion:new Date(),
-        usuarios:usuarios[0]
+        usuarios:usuarios[6]
     },
     {
         id:6,
         texto:"No puedo creer lo bueno que es",
         fecha_creacion:new Date(),
-        usuarios:usuarios[2]
+        usuarios:usuarios[7]
     },
     {
         id:7,
         texto:"Muy lindo, compraría denuevo",
         fecha_creacion:new Date(),
-        usuarios:usuarios[1]
+        usuarios:usuarios[8]
     },
     {
         id:8,
         texto:"Me fascina",
         fecha_creacion:new Date(),
-        usuarios:usuarios[3]
+        usuarios:usuarios[9]
     },
     {
         id:9,
         texto:"MEJOR PRODUCTO DEL MUNDO ENTERO, COMPRENLO",
         fecha_creacion:new Date(),
-        usuarios:usuarios[2]
+        usuarios:usuarios[10]
     },
     {
         id:10,
         texto:"EXCELENTE",
         fecha_creacion:new Date(),
         usuarios:usuarios[1]
+    },
+    {
+        id:11,
+        texto:"Se lo voy a recomendar a mi hermana!",
+        fecha_creacion:new Date(),
+        usuarios:usuarios[10]
+    },
+    {
+        id:12,
+        texto:"Buenarrrdo",
+        fecha_creacion:new Date(),
+        usuarios:usuarios[2]
     }
     
 ]
