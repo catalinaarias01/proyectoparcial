@@ -1,6 +1,5 @@
 const comentarios = require('./comentarios');
-const comentariosTexto = comentarios[0].texto;
-const comentariosTexto2 = comentarios[1].texto;
+
 //console.log(comentariosTexto)
 
 

@@ -510,6 +510,8 @@ form{
 .form-control{
   width: 80% !important;
   margin-left: 10%;
+  height:auto !important;
+
 }
 
 .error{
