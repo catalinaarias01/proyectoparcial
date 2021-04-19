@@ -30,6 +30,9 @@ let usersController = {
             res.render('profile', {productos:productos});
         },
         edit: (req, res) =>{
+        
+
+    
 
             res.render('profile-edit')
         },
@@ -46,8 +49,26 @@ let usersController = {
             res.render('product-add')
         },
         edit: (req, res) =>{
+            /* const id = req.params.id;
+            let productoFinal = [];
 
-            res.render('product-edit')
+            const checkProductId = () =>{
+                return productos.id == id;
+            }
+
+            productoFinal = productos.filter(checkProductId) */
+
+            const productID = req.params.id;
+
+                    let respuesta = [];
+                    for (let i = 0; i < productos.length; i++) {
+                        if (productos[i].id == productID) {
+                            respuesta.push(productos[i]);
+                        }
+                    } 
+
+            res.render('product-edit', {productos:respuesta})
+
         },
     },
 

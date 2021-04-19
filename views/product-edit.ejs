@@ -17,15 +17,15 @@
 			<form>
 				<div class="mb-3">
 					<label for="nombreProducto" class="form-label">Nombre del producto:</label>
-					<input type="text" class="form-control" id="nombreProducto">
+					<input type="text" class="form-control" id="nombreProducto" value="<%=productos[0].nombre%>">
 				  </div>
 				  <div class="mb-3">
 					<label for="descripcion" class="form-label">Descripción:</label>
-					<input type="text" class="form-control" id="descripcion">
+					<input type="text" class="form-control" id="descripcion" value="<%=productos[0].descripcion%>">
 				  </div>
 				  <div class="mb-3">
 					<label for="marca" class="form-label">Marca:</label>
-					<input type="text" class="form-control" id="marca">
+					<input type="text" class="form-control" id="marca" value="<%=productos[0].marca%>">
 				</div>
 				<div class="mb-3">
 				  <label for="seccion" class="form-label">Sección:</label><br>
@@ -38,7 +38,8 @@
 				</div>
 				
 				<div class="mb-3">
-					<label for="img" class="form-label">Imagen:</label>
+					<label for="img" class="form-label">Imagen:</label><br>
+					<img class="defaultImg" src=<%=productos[0].img%> >
 					<input type="file" id="imagen" class="form-control" name="img" accept="image/*">
 				</div>
 				<button type="submit" value="Registrarse" class="btn btn-primary">Submit</button>

@@ -610,3 +610,8 @@ textarea.form-input {
   }
 
 }
+
+.defaultImg{
+  width:40%;
+  margin-bottom:10px;
+}
