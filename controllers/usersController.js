@@ -2,11 +2,7 @@
 const productos = require('../data/productos');
 const usuarios = require('../data/usuarios');
 
-
-
-
 let usersController = {
-
 
     login: {
         index: (req, res) =>{
@@ -21,10 +17,6 @@ let usersController = {
             res.render('profile', {productos:productos});
         },
         edit: (req, res) =>{
-        
-
-    
-
             res.render('profile-edit')
         },
     },
@@ -40,25 +32,11 @@ let usersController = {
             res.render('product-add')
         },
         edit: (req, res) =>{
-            /* const id = req.params.id;
-            let productoFinal = [];
-
-            const checkProductId = () =>{
-                return productos.id == id;
-            }
-
-            productoFinal = productos.filter(checkProductId) */
 
             const productID = req.params.id;
+            const productosConId = productos.filter(producto=>producto.id==productID)
 
-                    let respuesta = [];
-                    for (let i = 0; i < productos.length; i++) {
-                        if (productos[i].id == productID) {
-                            respuesta.push(productos[i]);
-                        }
-                    } 
-
-            res.render('product-edit', {productos:respuesta})
+            res.render('product-edit', {productos:productosConId})
 
         },
     },
@@ -67,16 +45,7 @@ let usersController = {
             index: (req, res) => {    
                 
                 const userId = req.params.id;
-
-                
-                        usuariosConId = usuarios.filter(usuario => usuario.id == userId)
-                        
-                       /*  let respuesta = [];
-                        for (let i = 0; i < usuarios.length; i++) {
-                            if (productos[i].id == productID) {
-                                respuesta.push(productos[i]);
-                            }
-                        }  */
+                usuariosConId = usuarios.filter(usuario => usuario.id == userId)
     
                 res.render('user-profile', {usuario:usuariosConId, productos:productos})}
         }
