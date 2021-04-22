@@ -1,21 +1,12 @@
 
 const productos = require('../data/productos');
+const usuarios = require('../data/usuarios');
 
-let indexController = {
-    
-    index: (req, res) =>{
-        res.render('index', {productos:productos})
-    },
 
-}
 
-module.exports = indexController;
 
 let usersController = {
 
-/*     index: (req, res) =>{
-        res.render('index')
-    }, */
 
     login: {
         index: (req, res) =>{
@@ -72,7 +63,24 @@ let usersController = {
         },
     },
 
+        usersId: {
+            index: (req, res) => {    
+                
+                const userId = req.params.id;
 
+                
+                        usuariosConId = usuarios.filter(usuario => usuario.id == userId)
+                        
+                       /*  let respuesta = [];
+                        for (let i = 0; i < usuarios.length; i++) {
+                            if (productos[i].id == productID) {
+                                respuesta.push(productos[i]);
+                            }
+                        }  */
     
-}
+                res.render('user-profile', {usuario:usuariosConId, productos:productos})}
+        }
+    }
+
+
 module.exports = usersController;
