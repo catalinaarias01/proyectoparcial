@@ -469,6 +469,10 @@ a{
   text-align: center;
  
 }
+
+.login-main{
+  height:50vh;
+}
 form{
   display: flex;
   flex-direction: column;
@@ -536,6 +540,11 @@ textarea.form-input {
   width: 21% !important;
   margin-left: 39% !important;
   margin-bottom: 3% !important;
+}
+
+/*====== Search ======*/
+.search-container{
+  height:45vh;
 }
 
 /*====== Profile ======*/
