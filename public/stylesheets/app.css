@@ -273,7 +273,7 @@ hr {
 
 /*====== Footer ======*/
 .main-footer {
-  background-color: #ffffff;
+  background-color: #fcccd4;
   padding: 20px 0;
   margin-top: 80px;
 }
@@ -288,7 +288,7 @@ hr {
 }
 
 .footer-data h2 {
-  color: var(--gray);
+  color:white;
   font-size: 2em;
   font-weight: 400;
   font-family: "ABeeZee";
@@ -296,7 +296,7 @@ hr {
 }
 
 .footer-data p {
-  color: var(--gray);
+  color: white;
   font-size: 1.4em;
   font-weight: 300;
   font-family: "Sen";
