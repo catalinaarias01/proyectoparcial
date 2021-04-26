@@ -8,7 +8,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 //var loginRouter = require('./routes/login');
 //var registerRouter = require('./routes/register');
-var searchRouter = require('./routes/search');
+//var searchRouter = require('./routes/search');
 var productRouter = require('./routes/product');
 //var profileRouter = require('./routes/profile');
 
@@ -28,7 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/users', usersRouter);
 //app.use('/login', loginRouter);
 //app.use('/register', registerRouter);
-app.use('/search', searchRouter);
+//app.use('/search', searchRouter);
 app.use('/', productRouter);
 //app.use('/profile', profileRouter);
 

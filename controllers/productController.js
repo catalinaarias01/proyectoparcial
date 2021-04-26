@@ -15,6 +15,9 @@ let productController = {
         res.render('product', {productos:productosConId, comentarios:respuestaComentarios})
     },
 
+    search: (req,res) =>{
+        res.render('search-results')
+    },
 
 }
 
