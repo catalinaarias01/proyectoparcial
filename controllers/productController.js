@@ -1,9 +1,19 @@
-const productos = require('../data/productos');
+//const productos = require('../data/productos');
+const db = require('../database/models');
+const productos = db.Productos;
+const op = db.Sequelize.Op;
 
 let productController = {
 
     index: (req, res) =>{
-        res.render('index', {productos:productos})
+        productos.findAll()
+            .then(resultado=>{
+                res.render('index', {productos:resultado})
+            })
+            .catch(error=>{
+                console.log(error);
+                res.send(`El error es ${error}`)
+            })
     },
     
     product: (req, res) =>{

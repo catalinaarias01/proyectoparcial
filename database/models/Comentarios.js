@@ -17,11 +17,11 @@ module.exports = (sequelize, dataTypes)=>{
             allowNull:false,
         },
         producto_id:{
-            type:dataTypes.INT,
+            type:dataTypes.INTEGER,
             allowNull:false,
         },
         usuario_id:{
-            type:dataTypes.INT,
+            type:dataTypes.INTEGER,
             allowNull:false,
         }
     };
