@@ -29,10 +29,10 @@ module.exports = (sequelize, dataTypes)=>{
         contraseña: {
             type: dataTypes.STRING,
         },
-        fecha_creacion:{
+   /*      fecha_creacion:{
             type: dataTypes.DATE,
             allowNull: false,
-        },
+        }, */
     };
     let config = {
         table: "usuarios",

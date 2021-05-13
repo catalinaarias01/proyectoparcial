@@ -22,6 +22,8 @@ router.get('/addproducts', usersController.products.add);
 
 router.get('/editproducts/:id', usersController.products.edit);
 
+router.post('/editproducts/:id', usersController.products.update)
+
 router.get('/:id', usersController.usersId.index);
 
 module.exports = router;

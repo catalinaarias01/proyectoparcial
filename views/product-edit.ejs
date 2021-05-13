@@ -14,34 +14,37 @@
 				<h2 class="products-title">Editar producto</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
-			<form>
+			<form action="/users/editproducts/<%= productos.id %>" method="POST">
+
+
+
 				<div class="mb-3">
 					<label for="nombreProducto" class="form-label">Nombre del producto:</label>
-					<input type="text" class="form-control" id="nombreProducto" value="<%=productos[0].nombre%>">
+					<input type="text" class="form-control" name="nombre_producto" value="<%=productos.nombre_producto%>">
 				  </div>
 				  <div class="mb-3">
 					<label for="descripcion" class="form-label">Descripción:</label>
-					<input type="text" class="form-control" id="descripcion" value="<%=productos[0].descripcion%>">
+					<input type="text" class="form-control" name="descripcion" value="<%=productos.descripcion%>">
 				  </div>
 				  <div class="mb-3">
 					<label for="marca" class="form-label">Marca:</label>
-					<input type="text" class="form-control" id="marca" value="<%=productos[0].marca%>">
+					<input type="text" class="form-control" name="marca" value="<%=productos.marca%>">
 				</div>
 				<div class="mb-3">
 				  <label for="seccion" class="form-label">Sección:</label><br>
 				  <select id="seccion" name="seccion">
-					<option value="brochas">Brochas</option>
-					<option value="ojos">Ojos</option>
-					<option value="labios">Labios</option>
-					<option value="rostro">Rostro</option>
+					<option value="brochas" selected=<% productos.seccion=="brochas" ? true : false%> name="seccion" >Brochas</option>
+					<option value="ojos" selected=<% productos.seccion=="ojos" ? true : false%>  name="seccion" >Ojos</option>
+					<option value="labios" selected=<% productos.seccion=="labios" ? true : false%> name="seccion" >Labios</option>
+					<option value="rostro" selected=<% productos.seccion=="rostro" ? true : false%>  name="seccion" >Rostro</option>
 				  </select>
 				</div>
 				
-				<div class="mb-3">
+<!-- 				<div class="mb-3">
 					<label for="img" class="form-label">Imagen:</label><br>
-					<img class="defaultImg" src=<%=productos[0].img%> >
-					<input type="file" id="imagen" class="form-control" name="img" accept="image/*">
-				</div>
+					<img class="defaultImg" src=<%=productos.img_url%> >
+					<input type="file" id="imagen" class="form-control" name="img_url" accept="image/*">
+				</div> -->
 				<button type="submit" value="Registrarse" class="btn btn-primary">Submit</button>
 			  </form>
 			</div>

@@ -1,6 +1,13 @@
 
-const productos = require('../data/productos');
-const usuarios = require('../data/usuarios');
+//const productos = require('../data/productos');
+//const usuarios = require('../data/usuarios');
+
+const db = require('../database/models');
+const productos = db.Productos;
+const comentarios = db.Comentarios;
+const usuarios = db.Usuarios;
+
+const op = db.Sequelize.Op;
 
 let usersController = {
 
@@ -19,6 +26,7 @@ let usersController = {
         edit: (req, res) =>{
             res.render('profile-edit')
         },
+        
     },
 
     register: {
@@ -32,24 +40,59 @@ let usersController = {
             res.render('product-add')
         },
         edit: (req, res) =>{
-
             const productID = req.params.id;
-            const productosConId = productos.filter(producto=>producto.id==productID)
+            productos.findByPk(productID)
+            .then(resultadoProductos=>{
+                res.render('product-edit', {productos:resultadoProductos})
+            })
+            .catch(error=>{
+                console.log(error);
+                res.send(`El error es ${error}`)
+            })
+            //const productosConId = productos.filter(producto=>producto.id==productID)
 
-            res.render('product-edit', {productos:productosConId})
-
+            //res.render('product-edit', {productos:productosConId})
         },
+        update: (req, res)=>{   
+            let productID = req.params.id;
+            let productoActualizar = req.body
+            productos.update(
+                productoActualizar, 
+                {
+                    where: {
+                        id: productID
+                    }
+                }
+            )
+                .then(()=> res.redirect(`/product/${productID}`))
+                .catch(err => console.log(err))
+        }
     },
 
         usersId: {
             index: (req, res) => {    
-                
                 const userId = req.params.id;
-                usuariosConId = usuarios.filter(usuario => usuario.id == userId)
+                usuarios.findByPk(userId)
+                    .then(resultadoUsuarios=>{
+                        productos.findAll()
+                        .then(resultadoProductos=>{
+                            res.render('user-profile', {usuario:resultadoUsuarios,  productos:resultadoProductos})
+                        })
+                        .catch(error=>{
+                            console.log(error);
+                            res.send(`El error es ${error}`)
+                        })
+                    })
+                    .catch(error=>{
+                        console.log(error);
+                        res.send(`El error es ${error}`)
+                    })
+                //usuariosConId = usuarios.filter(usuario => usuario.id == userId)
     
-                res.render('user-profile', {usuario:usuariosConId, productos:productos})}
         }
     }
+}
 
 
 module.exports = usersController;
+

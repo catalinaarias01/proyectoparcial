@@ -28,10 +28,10 @@
 					<section class="product-box">
 						<a href="/product/<%=productos[i].id %>">
 							<figure class="product-box_image">
-								<img src=<%= productos[i].img %> alt="producto">
+								<img src=<%= productos[i].img_url %> alt="producto">
 							</figure>
 							<article class="product-box_data">
-								<h2><%= productos[i].nombre %></h2>
+								<h2><%= productos[i].nombre_producto %></h2>
 								<p> Marca: <%= productos[i].marca %></p>
 								<p><%= productos[i].descripcion %></p>
 								<p>Comentarios: 12</p>
@@ -55,10 +55,10 @@
 				<section class="product-box">
 					<a href="/product/<%=productos[i].id%>">
 						<figure class="product-box_image">
-							<img src=<%= productos[i].img%> alt="producto">
+							<img src=<%= productos[i].img_url%> alt="producto">
 						</figure>
 						<article class="product-box_data">
-							<h2><%= productos[i].nombre%></h2>
+							<h2><%= productos[i].nombre_producto%></h2>
 							<p><%= productos[i].descripcion%></p>
 							<p>Comentarios: 12</p>
 						</article>

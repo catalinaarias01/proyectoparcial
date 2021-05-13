@@ -11,32 +11,29 @@
 	<!-- product detail -->
 	<div class="container products-wrapper">
 		<div class="d-flex align-items-center">
-			<h2 class="products-title"><%=productos[0].nombre%></h2> 
+			<h2 class="products-title"><%=productos.nombre_producto%></h2> 
 			<p class="product-detail-description">
-				<a href="/users/editproducts/<%= productos[0].id %>">Editar</a>
+				<a href="/users/editproducts/<%= productos.id %>">Editar</a>
 			</p>
 		</div>
 		<div class="product-detail">
 			<div class="row">
 				<article class="col-12 col-lg-8 product-detail-info">
-					<img src=<%= productos[0].img %> alt="" class="product-detail-img">
-					<p class="product-detail-description"><%= productos[0].descripcion%></p>
+					<img src=<%= productos.img_url %> alt="" class="product-detail-img">
+					<p class="product-detail-description"><%= productos.descripcion%></p>
 				</article>
 				<div class="col-12 col-lg-4">
 					<section class="comments">
-
-						<% for(i=0; i < productos[0].comentariosUsuario.length; i++){ %>
-							<article>
-								<img src=<%=productos[0].comentariosUsuario[i].usuarios.img_src%> alt="">
-								<div class="data">
-									<p class="user">
-									<strong> <a href="/users/<%=productos[0].comentariosUsuario[i].usuarios.id%>"><%=productos[0].comentariosUsuario[i].usuarios.usuario%> </a> </strong>
-									<%=productos[0].comentariosUsuario[i].texto%></p>
-								</div>
-							</article>
-						<% } %>
-
-					</section>
+						<article>
+							<img src="" alt="">
+							<div class="data">
+								<p class="user">
+									<strong> <a href="/users/<%=comentarios.usuario_id%>"><%=usuarios.nombre_usuario%></a></strong>
+									<%=comentarios.texto%>
+								</p>
+							</div>
+						</article>
+				 	</section> 
 					<form class="form agregar" action="" method="GET">
 						<input class="form-input" type="text" value="" placeholder="Agregar comentario">
 						<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
