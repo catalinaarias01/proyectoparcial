@@ -29,6 +29,9 @@ module.exports = (sequelize, dataTypes)=>{
         contraseña: {
             type: dataTypes.STRING,
         },
+        img_usuario: {
+            type: dataTypes.STRING,
+        },
    /*      fecha_creacion:{
             type: dataTypes.DATE,
             allowNull: false,
