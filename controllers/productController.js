@@ -16,7 +16,7 @@ let productController = {
             })
     },
     
-    product: (req, res) =>{
+    /* product: (req, res) =>{
         const productID = req.params.id;
 
         const productosConId = productos.filter(producto=>producto.id==productID)
@@ -27,7 +27,7 @@ let productController = {
 
     search: (req,res) =>{
         res.render('search-results')
-    },
+    }, */
 
 }
 
