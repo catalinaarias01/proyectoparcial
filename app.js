@@ -29,9 +29,10 @@ resave:false,
 saveUninitialized: true}));
 app.use(function(req,res,next){
  res.locals = {
-   
+   nombreUsuario: req.session.usuarioLogueado
  }
-  })
+ return next();
+  });
 
 
 app.use('/users', usersRouter);
