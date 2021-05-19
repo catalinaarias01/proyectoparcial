@@ -7,6 +7,7 @@ const productos = db.Productos;
 const comentarios = db.Comentarios;
 const usuarios = db.Usuarios;
 
+
 const op = db.Sequelize.Op;
 
 let usersController = {
@@ -15,6 +16,19 @@ let usersController = {
         index: (req, res) =>{
             res.render('login')
         },
+        logueado: (req,res)=>{
+            const usuario = req.body.usuario
+            usuarios.findOne({
+                where: {
+                    nombre_usuario: usuario
+                }
+            })
+            .then(resultado => {
+                let usuarioLogueado = req.session.resultado
+                return res.redirect('/users/profile')
+            })
+            .catch(err=> console.log(err))
+        }
     },
 
     profile: {

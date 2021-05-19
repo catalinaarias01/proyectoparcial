@@ -11,6 +11,7 @@ const usersController = require('../controllers/usersController')
 /* router.get('/', usersController.index); */
 
 router.get('/login', usersController.login.index);
+router.post('/login', usersController.login.logueado);
 
 router.get('/profile', usersController.profile.index);
 
