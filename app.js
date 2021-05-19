@@ -27,12 +27,18 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({secret:'nuestra llave',
 resave:false,
 saveUninitialized: true}));
-app.use(function(req,res,next){
- res.locals = {
-   nombreUsuario: req.session.usuarioLogueado
- }
- return next();
-  });
+
+app.use((req,res,next)=>{
+  if(req.session.usuario != undefined){
+    res.locals = {
+      usuario:req.session.usuario
+    }
+  }
+  return next()
+})
+
+  
+
 
 
 app.use('/users', usersRouter);

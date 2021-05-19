@@ -13,7 +13,10 @@
 			</div>
 			<div class="data-container col-6">
 				<div class="d-flex align-items-center ">
-					<h1 class="main-title"> Juan Perez
+					<h1 class="main-title"> 
+						<% if (locals.usuario){%>
+							<%=locals.usuario.nombre + " " + locals.usuario.apellido  %>
+						<%}%>
 						<a href="/users/profile/edit">
 							<i class="fas fa-cog"></i>
 						</a>

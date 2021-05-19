@@ -35,7 +35,9 @@
 	
 				<ul class="right-navbar">
 					<li><a href="/users/profile">
-							Juan Perez<i class="fas fa-user"></i>
+						<% if (locals.usuario){%>
+							<%=locals.usuario.nombre  %><i class="fas fa-user"></i>
+						<%}%>
 						</a>
 					</li>
 					<li>

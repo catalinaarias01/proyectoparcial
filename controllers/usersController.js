@@ -6,11 +6,38 @@ const db = require('../database/models');
 const productos = db.Productos;
 const comentarios = db.Comentarios;
 const usuarios = db.Usuarios;
+const bcrypt = require('bcryptjs');
 
 
 const op = db.Sequelize.Op;
 
 let usersController = {
+
+    register: {
+        index: (req, res) =>{
+            res.render('register')
+        },
+        store: (req, res) =>{
+             let usuario = {
+                id:req.body.id,
+                nombre: req.body.nombre,
+                apellido: req.body.apellido,
+                mail: req.body.email,
+                nombre_usuario:req.body.usuario,
+                edad:req.body.edad,
+                contraseña: bcrypt.hashSync(req.body.contraseña, 10),
+                fecha_creacion:"2020-06-06 10:55:00",
+                img_usuario:""
+            } 
+          usuarios.create(usuario)
+            .then(user => {
+                res.redirect('/users/profile')
+                console.log(usuario)
+            })
+            .catch( error => console.log(error)) 
+        },
+    },
+
 
     login: {
         index: (req, res) =>{
@@ -19,17 +46,16 @@ let usersController = {
         logueado: (req,res)=>{
             const usuario = req.body.usuario
             usuarios.findOne({
-                where: {
-                    nombre_usuario: usuario
-                }
+                where:[{ nombre_usuario: usuario }]
             })
             .then(resultado => {
-                let usuarioLogueado = req.session.resultado
+                req.session.usuario = resultado
                 return res.redirect('/users/profile')
             })
             .catch(err=> console.log(err))
         }
     },
+
 
     profile: {
         index: (req, res) =>{
@@ -43,11 +69,6 @@ let usersController = {
         
     },
 
-    register: {
-    index: (req, res) =>{
-        res.render('register')
-    }
-    },
 
     products: {
         add: (req, res) =>{

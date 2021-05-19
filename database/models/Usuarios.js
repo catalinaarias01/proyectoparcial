@@ -2,7 +2,7 @@ module.exports = (sequelize, dataTypes)=>{
     let alias = "Usuarios";
     let cols = {
         id: {
-            autoIncrement: true,
+            //autoIncrement: true,
             primaryKey: true,
             type: dataTypes.INTEGER,
             allowNull: false,
@@ -29,13 +29,13 @@ module.exports = (sequelize, dataTypes)=>{
         contraseña: {
             type: dataTypes.STRING,
         },
+        fecha_creación:{
+              type: dataTypes.DATE,
+              allowNull: false,
+          }, 
         img_usuario: {
             type: dataTypes.STRING,
         },
-   /*      fecha_creacion:{
-            type: dataTypes.DATE,
-            allowNull: false,
-        }, */
     };
     let config = {
         table: "usuarios",
