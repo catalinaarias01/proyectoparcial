@@ -30,12 +30,12 @@ saveUninitialized: true}));
 
 app.use((req,res,next)=>{
   if(req.session.usuario != undefined){
-    res.locals = {
-      usuario:req.session.usuario
+    res.locals = req.session.usuario
     }
-  }
-  return next()
+    return next()
 })
+
+
 
   
 

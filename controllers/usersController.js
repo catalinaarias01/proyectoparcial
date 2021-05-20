@@ -26,18 +26,18 @@ let usersController = {
                 nombre_usuario:req.body.usuario,
                 edad:req.body.edad,
                 contraseña: bcrypt.hashSync(req.body.contraseña, 10),
-                fecha_creacion:"2020-06-06 10:55:00",
+                fecha_creación:"2020-06-06 10:55:00",
                 img_usuario:""
             } 
+            console.log(usuario)
           usuarios.create(usuario)
             .then(user => {
-                res.redirect('/users/profile')
-                console.log(usuario)
+                res.redirect('/users/login')
+                console.log(user)
             })
             .catch( error => console.log(error)) 
         },
     },
-
 
     login: {
         index: (req, res) =>{
