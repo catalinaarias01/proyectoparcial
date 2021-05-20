@@ -5,9 +5,13 @@
 
 <body>
 	<!-- Header -->
-	
+	<% if (locals.nombre!=undefined) { %>
+		<%- include('./partials/headerLogueado.ejs')%>
+	<%} else { %>
+		<%- include('./partials/header.ejs')%>
+	<% } %>
 	<!-- /Header -->
-	<%- include('./partials/header.ejs')  %> 
+	
 	<!-- product detail -->
 	<div class="container products-wrapper">
 		<div class="d-flex align-items-center">
