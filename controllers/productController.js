@@ -53,7 +53,24 @@ let productController = {
     },
 
     search: (req,res) =>{
-        res.render('search-results')
+        productos.findAll({
+            where: {
+                [op.or]: [
+                    {nombre_producto: {[op.like]: `%${req.query.search}%`}},
+                    {marca: {[op.like]: `%${req.query.search}%`}},
+                    {descripcion: {[op.like]: `%${req.query.search}%`}},
+                    {seccion: {[op.like]: `%${req.query.search}%`}}
+                ]
+            }
+        })
+            .then(resultadoSearch=>{
+                res.render('search-results', {productos:resultadoSearch})
+                console.log(resultadoSearch)
+            })
+            .catch(error=>{
+                console.log(error);
+                res.send(`El error es ${error}`)
+            })
     }, 
 
 }

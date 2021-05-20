@@ -19,7 +19,6 @@ let usersController = {
         },
         store: (req, res) =>{
              let usuario = {
-                id:req.body.id,
                 nombre: req.body.nombre,
                 apellido: req.body.apellido,
                 mail: req.body.email,
