@@ -53,13 +53,14 @@ let productController = {
     },
 
     search: (req,res) =>{
+        let searchResults = req.query.search
         productos.findAll({
             where: {
                 [op.or]: [
-                    {nombre_producto: {[op.like]: `%${req.query.search}%`}},
-                    {marca: {[op.like]: `%${req.query.search}%`}},
-                    {descripcion: {[op.like]: `%${req.query.search}%`}},
-                    {seccion: {[op.like]: `%${req.query.search}%`}}
+                    {nombre_producto: {[op.like]: `%${searchResults}%`}},
+                    {marca: {[op.like]: `%${searchResults}%`}},
+                    {descripcion: {[op.like]: `%${searchResults}%`}},
+                    {seccion: {[op.like]: `%${searchResults}%`}}
                 ]
             }
         })
