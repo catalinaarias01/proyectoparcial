@@ -154,6 +154,21 @@ let productController = {
             )
                 .then(()=> res.redirect(`/product/${productID}`))
                 .catch(err => console.log(err))
+        },
+        comment: (req,res) =>{
+            const productoId = req.params.id;
+            const comentario = {
+                texto:req.body.text,
+                fecha_creacion:"2020-06-06 10:55:00",
+                producto_id:productoId,
+                usuario_id:req.session.usuario.id,
+            }
+            comentarios.create(comentario)
+            .then(comentarios => {
+                res.redirect(`/product/${productoId}`)
+                console.log(comentarios)
+            })
+            .catch( error => console.log(error)) 
         }
     }
 
