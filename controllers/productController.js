@@ -66,12 +66,43 @@ let productController = {
         })
             .then(resultadoSearch=>{
                 res.render('search-results', {productos:resultadoSearch})
-                console.log(resultadoSearch)
+            })
+            .catch(error=>{
+                console.log(error);
+                res.send(`El error es ${error}`)
+            }) 
+            
+        /* productos.findAll({where: {
+            nombre_producto: {[op.like]: `%${searchResults}%`}
+        }})
+        .then(resultadoProductos=>{
+            productos.findAll({where: {
+                marca: {[op.like]: `%${searchResults}%`}
+            }})
+                .then(resultadoMarcas=>{
+                    productos.findAll({where: {
+                        descripcion: {[op.like]: `%${searchResults}%`}
+                    }})
+                    .then(resultadoDescripcion=>{
+
+                        res.render('search-results', {productos:resultadoProductos, marcas:resultadoMarcas, descripcion:resultadoDescripcion})
+                    })
+                    .catch(error=>{
+                        console.log(error)
+                        res.send(`El error es ${error}`)
+                    })
+                })
+                .catch(error=>{
+                    console.log(error);
+                    res.send(`El error es ${error}`)
+                })
+                
             })
             .catch(error=>{
                 console.log(error);
                 res.send(`El error es ${error}`)
             })
+         */
     }, 
 
 }
