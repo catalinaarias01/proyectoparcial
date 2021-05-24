@@ -21,12 +21,6 @@ router.get('/profile/edit', usersController.profile.edit);
 router.get('/register', usersController.register.index);
 router.post('/register', usersController.register.store);
 
-router.get('/addproducts', usersController.products.add);
-router.post('/addproducts', usersController.products.store);
-
-router.get('/editproducts/:id', usersController.products.edit);
-
-router.post('/editproducts/:id', usersController.products.update)
 
 router.get('/:id', usersController.usersId.index);
 
