@@ -12,6 +12,7 @@ const usersController = require('../controllers/usersController')
 
 router.get('/login', usersController.login.index);
 router.post('/login', usersController.login.logueado);
+router.post('/logout', usersController.login.logout);
 
 router.get('/profile', usersController.profile.index);
 
@@ -21,6 +22,7 @@ router.get('/register', usersController.register.index);
 router.post('/register', usersController.register.store);
 
 router.get('/addproducts', usersController.products.add);
+router.post('/addproducts', usersController.products.store);
 
 router.get('/editproducts/:id', usersController.products.edit);
 

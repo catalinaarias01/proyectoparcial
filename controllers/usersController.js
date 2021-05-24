@@ -7,6 +7,7 @@ const productos = db.Productos;
 const comentarios = db.Comentarios;
 const usuarios = db.Usuarios;
 const bcrypt = require('bcryptjs');
+const { localsName } = require('ejs');
 
 
 const op = db.Sequelize.Op;
@@ -49,9 +50,18 @@ let usersController = {
             })
             .then(resultado => {
                 req.session.usuario = resultado
+                if (req.body.recordame) {
+                    res.cookie("userId",resultado.id,{maxAge:10000*600*10})
+                }
                 return res.redirect('/users/profile')
             })
             .catch(err=> console.log(err))
+        },
+        logout:(req,res)=>{
+            req.session.destroy()
+            res.clearCookie('userId')
+    
+            return res.redirect('/')
         }
     },
 
@@ -72,6 +82,25 @@ let usersController = {
     products: {
         add: (req, res) =>{
             res.render('product-add')
+        },
+        store: (req, res) =>{
+            let producto = {
+                nombre_producto: req.body.nombre,
+                descripcion: req.body.descripcion,
+                seccion: req.body.seccion,
+                marca:req.body.marca,
+                img_url:req.body.img,
+                fecha_creacion: "2020-06-06 10:55:00",
+                usuario_id: req.session.usuario.id,
+                comentarios_id: null
+            } 
+            console.log(producto)
+          productos.create(producto)
+            .then(products => {
+                res.redirect('/')
+                console.log(products)
+            })
+            .catch( error => console.log(error)) 
         },
         edit: (req, res) =>{
             const productID = req.params.id;
