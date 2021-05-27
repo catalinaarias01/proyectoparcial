@@ -11,8 +11,8 @@ let productController = {
 
     index: (req, res) =>{
         productos.findAll()
-            .then(resultado=>{
-                res.render('index', {productos:resultado})
+            .then(productos=>{
+                res.render('index', {productos:productos})
             })
             .catch(error=>{
                 console.log(error);
@@ -31,17 +31,16 @@ let productController = {
             console.log(usuarioProducto.id)
             usuarios.findByPk(usuarioProducto.usuario_id)
             .then(resultadoUsuarioProducto =>{
-                const usuarioQueCargoProducto = resultadoUsuarioProducto
-              console.log(resultadoUsuarioProducto)
-              productos.findByPk(productID)
-              .then(resultadoProductos=>{
-                  comentarios.findByPk(resultadoProductos.comentarios_id)
-                      .then(resultadoComentarios=>{
-                          usuarios.findByPk(resultadoComentarios.usuario_id)
-                           
-                              .then(resultadoUsuarios=>{
-                                  res.render('product', {productos:resultadoProductos, comentarios:resultadoComentarios, usuarios:resultadoUsuarios, usuarioProducto:resultadoUsuarioProducto})
-                              })
+                console.log(resultadoUsuarioProducto)
+                productos.findByPk(productID)
+                .then(resultadoProductos=>{
+                    comentarios.findByPk(resultadoProductos.comentarios_id)
+                        .then(resultadoComentarios=>{
+                            usuarios.findByPk(resultadoComentarios.usuario_id)
+                            
+                                .then(resultadoUsuarios=>{
+                                    res.render('product', {productos:resultadoProductos, comentarios:resultadoComentarios, usuarios:resultadoUsuarios, usuarioProducto:resultadoUsuarioProducto})
+                                })
             })
         })
                         .catch(error=>{
@@ -132,10 +131,20 @@ let productController = {
                 fecha_creacion: "2020-06-06 10:55:00",
                 usuario_id: req.session.usuario.id,
                 comentarios_id: null
-            } 
-          productos.create(producto)
+            };
+
+            
+            productos.create(producto)
             .then(products => {
-                res.redirect('/')
+                let cliente_producto = {
+                    producto_id:products.id,
+                    usuario_id:req.session.usuario.id,
+                }
+                cliente_productos.create(cliente_producto)
+                .then(resultado=>{
+                    res.redirect('/')
+                })
+                .catch( error => console.log(error)) 
             })
             .catch( error => console.log(error)) 
         },
