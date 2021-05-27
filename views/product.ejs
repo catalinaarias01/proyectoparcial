@@ -24,6 +24,7 @@
 			<div class="row">
 				<article class="col-12 col-lg-8 product-detail-info">
 					<img src=<%= productos.img_url %> alt="" class="product-detail-img">
+					<p class="product-detail-description"><b>Cargado por: </b><a href="/users/<%=usuarioProducto.id%>"><%=usuarioProducto.nombre_usuario%></a></p>
 					<p class="product-detail-description"><%= productos.descripcion%></p>
 				</article>
 				<div class="col-12 col-lg-4">
@@ -32,7 +33,7 @@
 							<img src=<%=usuarios.img_usuario%> alt="">
 							<div class="data">
 								<p class="user">
-									<strong> <a href="/<%=comentarios.usuario_id%>"><%=usuarios.nombre_usuario%></a></strong>
+									<strong> <a href="/users/<%=comentarios.usuario_id%>"><%=usuarios.nombre_usuario%></a></strong>
 									<%=comentarios.texto%>
 								</p>
 							</div>

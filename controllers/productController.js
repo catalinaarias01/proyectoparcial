@@ -3,6 +3,7 @@ const db = require('../database/models');
 const productos = db.Productos;
 const comentarios = db.Comentarios;
 const usuarios = db.Usuarios;
+const cliente_productos = db.Cliente_productos;
 
 const op = db.Sequelize.Op;
 
@@ -19,21 +20,34 @@ let productController = {
             })
     },
     
+
     product: (req, res) =>{
         const productID = req.params.id;
-        productos.findByPk(productID)
-        .then(resultadoProductos=>{
-            comentarios.findByPk(resultadoProductos.comentarios_id)
-                .then(resultadoComentarios=>{
-                    usuarios.findByPk(resultadoComentarios.usuario_id)
-                    .then(resultadoUsuarios=>{
-
-                        res.render('product', {productos:resultadoProductos, comentarios:resultadoComentarios, usuarios:resultadoUsuarios})
-                    })
-                    .catch(error=>{
-                        console.log(error)
-                        res.send(`El error es ${error}`)
-                    })
+        cliente_productos.findAll({
+            where:[{producto_id:productID}]
+        })
+        .then(resultadoUsuarioProducto=>{
+            const usuarioProducto = resultadoUsuarioProducto[0];
+            console.log(usuarioProducto.id)
+            usuarios.findByPk(usuarioProducto.usuario_id)
+            .then(resultadoUsuarioProducto =>{
+                const usuarioQueCargoProducto = resultadoUsuarioProducto
+              console.log(resultadoUsuarioProducto)
+              productos.findByPk(productID)
+              .then(resultadoProductos=>{
+                  comentarios.findByPk(resultadoProductos.comentarios_id)
+                      .then(resultadoComentarios=>{
+                          usuarios.findByPk(resultadoComentarios.usuario_id)
+                           
+                              .then(resultadoUsuarios=>{
+                                  res.render('product', {productos:resultadoProductos, comentarios:resultadoComentarios, usuarios:resultadoUsuarios, usuarioProducto:resultadoUsuarioProducto})
+                              })
+            })
+        })
+                        .catch(error=>{
+                            console.log(error)
+                            res.send(`El error es ${error}`)
+                        })
                 })
                 .catch(error=>{
                     console.log(error);
@@ -119,11 +133,9 @@ let productController = {
                 usuario_id: req.session.usuario.id,
                 comentarios_id: null
             } 
-            console.log(producto)
           productos.create(producto)
             .then(products => {
                 res.redirect('/')
-                console.log(products)
             })
             .catch( error => console.log(error)) 
         },
@@ -166,7 +178,7 @@ let productController = {
             comentarios.create(comentario)
             .then(comentarios => {
                 res.redirect(`/product/${productoId}`)
-                console.log(comentarios)
+
             })
             .catch( error => console.log(error)) 
         }
