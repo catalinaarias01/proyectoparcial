@@ -28,20 +28,25 @@ let productController = {
         })
         .then(resultadoUsuarioProducto=>{
             const usuarioProducto = resultadoUsuarioProducto[0];
-            console.log(usuarioProducto.id)
+
             usuarios.findByPk(usuarioProducto.usuario_id)
             .then(resultadoUsuarioProducto =>{
-                console.log(resultadoUsuarioProducto)
+
                 productos.findByPk(productID)
                 .then(resultadoProductos=>{
-                    comentarios.findByPk(resultadoProductos.comentarios_id)
+                    comentarios.findAll({
+                        where:[{producto_id:resultadoProductos.id}],
+                         include:[{
+                            model:usuarios,
+                        }] 
+                    })
                         .then(resultadoComentarios=>{
-                            usuarios.findByPk(resultadoComentarios.usuario_id)
-                            
+                            console.log(resultadoComentarios[0].Usuario)
+                                usuarios.findAll()
                                 .then(resultadoUsuarios=>{
-                                    res.render('product', {productos:resultadoProductos, comentarios:resultadoComentarios, usuarios:resultadoUsuarios, usuarioProducto:resultadoUsuarioProducto})
+                                    res.render('product', {productos:resultadoProductos, comentarios:resultadoComentarios,  usuarioProducto:resultadoUsuarioProducto, usuariosComentan:resultadoUsuarios})
                                 })
-            })
+                        })
         })
                         .catch(error=>{
                             console.log(error)
@@ -180,7 +185,6 @@ let productController = {
             const productoId = req.params.id;
             const comentario = {
                 texto:req.body.text,
-                fecha_creacion:"2020-06-06 10:55:00",
                 producto_id:productoId,
                 usuario_id:req.session.usuario.id,
             }

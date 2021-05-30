@@ -12,9 +12,10 @@ module.exports = (sequelize, dataTypes)=>{
             type:dataTypes.STRING,
             allowNull:false,
         },
-        fecha_creacion:{
+        created_at:{
             type:dataTypes.DATE,
             allowNull:false,
+            defaultValue: sequelize.literal('NOW()')
         },
         producto_id:{
             type:dataTypes.INTEGER,
