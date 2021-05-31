@@ -24,28 +24,28 @@
 			<div class="row">
 				<article class="col-12 col-lg-8 product-detail-info">
 					<img src=<%= productos.img_url %> alt="" class="product-detail-img">
-					<p class="product-detail-description"><b>Cargado por: </b><a href="/users/<%=usuarioProducto.id%>"><%=usuarioProducto.nombre_usuario%></a></p>
+					<p class="product-detail-description"><b>Cargado por: </b><a href="/users/<%=productos.usuarioCreadores.id%>"><%=productos.usuarioCreadores.nombre_usuario%></a></p>
 					<p class="product-detail-description"><%= productos.descripcion%></p>
 				</article>
 				<div class="col-12 col-lg-4">
 					<section class="comments">
-					<%for (let i = 0; i < comentarios.length; i++) {%>
-						
-						<article>
-							
+						- <%for (let i = 0; i < productos.comentarios.length; i++) {%>
+                        
+							<article>
 								
-									<img src=<%=comentarios[i].Usuario.img_usuario%> alt="">
-									<div class="data">
-										<p class="user">
-											<strong> <a href="/users/<%=comentarios[i].usuario_id%>"><%=comentarios[i].Usuario.nombre_usuario%></a></strong>
-											<%=comentarios[i].texto%>
-										</p>
-									</div>
-								
-
-
-						</article>
-					<%}%>
+									
+		
+										<div class="data">
+											<p class="user">
+												<strong> <a href="/users/<%=productos.comentarios[i].usuario_id%>"></a></strong>
+												<%=productos.comentarios[i].texto%>
+											</p>
+										</div>
+									
+	
+	
+							</article>
+						<%}%>
 				 	</section> 
 					<form class="form agregar" action="/product/<%=productos.id%>/addcomment" method="POST">
 						<input class="form-input" name="text" type="text" value="" placeholder="Agregar comentario">
