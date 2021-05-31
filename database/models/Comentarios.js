@@ -40,7 +40,8 @@ module.exports = (sequelize, dataTypes)=>{
         }),
         Comentarios.belongsTo(models.Usuarios,{
             as:"usuarios",
-            foreignKey:"usuario_id"
+            foreignKey:"usuario_id",
+            targetKey:"id"
         })
     }
     return Comentarios;

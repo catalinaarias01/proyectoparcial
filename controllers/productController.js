@@ -10,7 +10,7 @@ const op = db.Sequelize.Op;
 let productController = {
 
     index: (req, res) =>{
-        productos.findAll({include:[{association:"usuarioCreadores"}]})
+        productos.findAll({include:[{association:"usuarioCreadores"},{association:"comentarios"}]})
             .then(productos=>{
                 res.render('index', {productos:productos})
             })
@@ -24,11 +24,26 @@ let productController = {
     product: (req, res) =>{
         const productId = req.params.id;
         productos.findByPk(productId,{
-            include:[{association:"comentarios"},{association:"usuarioCreadores"}]
+            include:[
+                {
+                    association:"comentarios",
+                     /* include:[
+                        {
+                            association:"usuarios",
+                        }
+                    ]  */
+                },
+                {
+                    association:"usuarioCreadores"
+                }]
             
         })
         .then(resultado=>{
-            res.render("product",{productos:resultado})
+            usuarios.findAll()
+            .then(usuarios=>{
+
+                res.render("product",{productos:resultado, usuarios:usuarios})
+            })
         })
         /*const productID = req.params.id;
         cliente_productos.findAll({
