@@ -19,14 +19,16 @@
 			<div class="col-12">
 				<h2 class="products-title">Ingresar</h2>
 				<% if(locals.errors){ %>
-					<p class="alert" > <%= errors.login %><p>
+					<p class="alert" > <%= errors.login %></p>
 				<% } %>
+			
 			</div>
 			<!-- Show the "ultimos" products -->
 			<form method="POST" action="/users/login">
 				<div class= "mb-3">
 				<label  for="Usuario">Email:</label><br> 
-					<input type="text" id="usuario" name="email"><br> </div>
+			 
+					<input type="text" id="usuario" name="email" value=<%locals.nombre ?locals.nombre :"" %> ><br> </div>
 					<div class= "mb-3">
 					<label for="contraseña">Contraseña:</label><br>
 					<input type="password" id="contraseña" name="contraseña"><br> </div>

@@ -205,7 +205,9 @@ let productController = {
                 .catch(err => console.log(err))
         },
         comment: (req,res) =>{
-            const productoId = req.params.id;
+       
+            if(req.session.usuario != undefined){
+                const productoId = req.params.id;
             const comentario = {
                 texto:req.body.text,
                 producto_id:productoId,
@@ -213,10 +215,14 @@ let productController = {
             }
             comentarios.create(comentario)
             .then(comentarios => {
-                res.redirect(`/product/${productoId}`)
+             return res.redirect(`/product/${productoId}`)
 
             })
             .catch( error => console.log(error)) 
+        
+            } else {
+                 return res.render('login')
+            }
         }
     }
 
