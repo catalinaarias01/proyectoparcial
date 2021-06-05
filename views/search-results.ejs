@@ -7,7 +7,7 @@
 <body>
 	<!-- Header -->
 	
-	<% if (productos) { %>
+	<% if(locals.nombre!=undefined) { %>
 		<%- include('./partials/headerLogueado.ejs')%>
 	<%} else { %>
 		<%- include('./partials/header.ejs')%>

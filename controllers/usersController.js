@@ -17,11 +17,12 @@ let usersController = {
     register: {
         index: (req, res) =>{
             // Control de acceso
-            if(req.session.user != undefined){
-                return res.redirect('/')
-            } else {
-                return res.render('register')
-            }
+            //if(req.session.user != undefined){
+              //  return res.redirect('/')
+            //} else {
+              //  return res.render('register')
+              
+        res.render("register")
         },
         store: (req, res) =>{
 
@@ -105,11 +106,12 @@ let usersController = {
     login: {
         index: (req, res) =>{
             // Control de acceso
-            if(req.session.user != undefined){
-                return res.redirect('/')
-            } else {
-                return res.render('login')
-            }
+            //if(req.session.user != undefined){
+             //   return res.redirect('/')
+            //} else {
+             //   return res.render('login')
+            //} 
+            res.render('login')
         },
         logueado: (req,res)=>{
             // Variable para guardar errores
