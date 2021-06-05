@@ -34,7 +34,11 @@
 				<div class="row">
 					<div class="col-12">
 						<h2 class="products-title">Registrarse</h2>
+						<% if(locals.errors){ %>
+							<p class="alert" ></p> <%= errors.register %><p>
+						<% } %>
 					</div>
+				
 
 			<form method="POST" action="/users/register">
 				<div class="mb-3">
@@ -64,7 +68,7 @@
 				</div>
 				<div class="mb-3">
 					<label for="exampleInputPassword1" class="form-label">Repetir contraseña:</label>
-					<input type="password" class="form-control" id="contraseña">
+					<input type="password" class="form-control" id="contraseña" name="repetir">
 				  </div>
 				<button type="submit" value="Registrarse" class="btn btn-primary">Submit</button>
 			  </form>
