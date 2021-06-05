@@ -27,6 +27,7 @@ let productController = {
             include:[
                 {
                     association:"comentarios",
+                    
                      /* include:[
                         {
                             association:"usuarios",
@@ -35,7 +36,8 @@ let productController = {
                 },
                 {
                     association:"usuarioCreadores"
-                }]
+                }],
+            //order: [[comentarios, 'created_at', 'desc']],
             
         })
         .then(resultado=>{

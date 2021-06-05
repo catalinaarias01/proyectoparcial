@@ -53,8 +53,9 @@
 						<input class="form-input" name="text" type="text" value="" placeholder="Agregar comentario">
 						<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
 					</form>
-				<div>Solo se puede comentar si estas logueado</div>
-					
+					<% if (locals.nombre==undefined) { %>
+						<div>Solo se puede comentar si estas logueado</div>
+					<%} %>
 					<hr>
 				</div>
 			</div>
