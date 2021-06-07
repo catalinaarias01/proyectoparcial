@@ -194,7 +194,7 @@ let productController = {
                     descripcion: productoActualizar.descripcion,
                     seccion: productoActualizar.seccion,
                     marca: productoActualizar.marca,
-                    img_url: req.file.path,
+                    img_url: req.file.filename,
                 }, 
                 {
                     where: {
