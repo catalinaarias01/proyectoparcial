@@ -24,19 +24,11 @@ let productController = {
     product: (req, res) =>{
         const productId = req.params.id;
         productos.findByPk(productId,{
-            include:[
-                {
-                    association:"comentarios",
-                    
-                     /* include:[
-                        {
-                            association:"usuarios",
-                        }
-                    ]  */
-                },
-                {
-                    association:"usuarioCreadores"
-                }],
+            include:["comentarios","usuarioCreadores"],
+            order:[["comentarios",'created_at','desc']],
+           
+                
+               
             //order: [[comentarios, 'created_at', 'desc']],
             
         })
