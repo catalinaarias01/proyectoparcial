@@ -162,14 +162,17 @@ let usersController = {
         store: (req,res) =>{
             let userId = req.params.id;
             let usuarioActualizar = req.body
-            usuarios.update(
-                usuarioActualizar, 
-                {
-                    where: {
-                        id: userId
-                    }
-                }
-            )
+            usuarios.update({
+                nombre: req.body.nombre,
+                apellido: req.body.apellido,
+                mail:req.body.mail,
+                nombre_usuario: req.body.nombre_usuario,
+                edad: req.body.edad,
+                contraseña:bcrypt.hashSync(req.body.contraseña, 10),
+                img_usuario:req.body.img_usuario,
+            },{
+                where:{id:userId}
+            })
                 .then(()=> res.redirect(`/users/profile`))
                 .catch(err => console.log(err))
         
