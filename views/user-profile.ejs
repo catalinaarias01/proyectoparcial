@@ -17,19 +17,19 @@
 	<section class="info-usuario container products-wrapper">
 		<div class="row">
 			<div class="img-container offset-3 col-2">
-				<img  alt="foto de perfil" class="foto-perfil">
+				<img  src="/images/users/<%=usuario[0].img_usuario%>" alt="foto de perfil" class="foto-perfil">
 			</div>
 			<div class="data-container col-6">
 				<div class="d-flex align-items-center ">
-					<h1 class="main-title"> <%= usuario.nombre %> <%= usuario.apellido %>
+					<h1 class="main-title"> <%= usuario[0].nombre %> <%= usuario[0].apellido %>
 
 					</h1>
 					<a class="btn mt-3 ml-4" href="">SEGUIR</a>
 				</div>
 				<div>
 
-					<p><b>Usuario:</b> <%=usuario.nombre_usuario%> <b>Edad:</b> <%=usuario.edad%></p>
-					<p><b>Mail: </b><%=usuario.mail%></p>
+					<p><b>Usuario:</b> <%=usuario[0].nombre_usuario%> <b>Edad:</b> <%=usuario[0].edad%></p>
+					<p><b>Mail: </b><%=usuario[0].mail%></p>
 				</div>
 			</div>
 		</div>
@@ -40,18 +40,18 @@
 	<div class= "container products-wrapper">
 		<div class="row">
 			<div class="col-12"><h2 class="products-title">Sus productos</h2></div>
-	<% for(i=0; i < productos.length; i++){ %>
+	<% for(i=0; i < usuario[0].productosCreados.length; i++){ %>
 		<div class="col-12 col-sm-6 col-lg-3 product">
 			<section class="product-box">
-				<a href="/product/<%=productos[i].id %>">
+				<a href="/product/<%=usuario[0].productosCreados[i].id %>">
 					<figure class="product-box_image">
-						<img src=<%= productos[i].img_url %> alt="producto">
+						<img src="/images/products/<%= usuario[0].productosCreados[i].img_url %>" alt="producto">
 					</figure>
 					<article class="product-box_data">
-						<h2><%= productos[i].nombre_producto %></h2>
-						<p> Marca: <%= productos[i].marca %></p>
-						<p><%= productos[i].descripcion %></p>
-						<p>Comentarios: 12</p>
+						<h2><%= usuario[0].productosCreados[i].nombre_producto %></h2>
+						<p> Marca: <%= usuario[0].productosCreados[i].marca %></p>
+						<p><%= usuario[0].productosCreados[i].descripcion %></p>
+						<p>Comentarios: <%=usuario[0].productosCreados[i].comentarios.length%></p>
 					</article>
 				</a>
 			</section>

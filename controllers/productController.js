@@ -149,8 +149,7 @@ let productController = {
                 descripcion: req.body.descripcion,
                 seccion: req.body.seccion,
                 marca:req.body.marca,
-                img_url:req.body.img,
-                fecha_creacion: "2020-06-06 10:55:00",
+                img_url:req.file.filename,
                 usuario_id: req.session.usuario.id,
                 comentarios_id: null
             };
@@ -194,7 +193,7 @@ let productController = {
                     descripcion: productoActualizar.descripcion,
                     seccion: productoActualizar.seccion,
                     marca: productoActualizar.marca,
-                    img_url: req.file.filename,
+                    img_url: req.file == undefined ? productos.img_url : req.file.filename
                 }, 
                 {
                     where: {

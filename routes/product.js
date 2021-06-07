@@ -18,7 +18,7 @@ router.get('/product/:id', productController.product);
 router.post('/product/:id/addcomment', productController.comment);
 router.get('/search', productController.search);
 router.get('/addproducts', productController.add);
-router.post('/addproducts',productController.store);
+router.post('/addproducts', upload.single('img_url'), productController.store);
 router.get('/editproducts/:id', productController.edit);
 router.post('/editproducts/:id',upload.single('img_url'), productController.update)
 

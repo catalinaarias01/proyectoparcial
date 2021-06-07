@@ -86,7 +86,6 @@ let usersController = {
                             nombre_usuario:req.body.usuario,
                             edad:req.body.edad,
                             contraseña: bcrypt.hashSync(req.body.contraseña, 10),
-                            fecha_creación:"2020-06-06 10:55:00",
                             img_usuario:""
                         }
                         console.log(usuario)
@@ -153,7 +152,18 @@ let usersController = {
     profile: {
         index: (req, res) =>{
            /* const username = req.body.usuario;*/
-            res.render('profile', {productos:productos});
+           productos.findAll({
+            where:[{ usuario_id : req.session.usuario.id}],
+            include:["comentarios"]
+        })
+            .then(resultado=>{
+                console.log(resultado)
+                res.render('profile', {productos:resultado});
+            })
+            .catch(error=>{
+                console.log(error);
+                res.send(`El error es ${error}`)
+            })
         },
         edit: (req, res) =>{
 
@@ -161,18 +171,20 @@ let usersController = {
         },
         store: (req,res) =>{
             let userId = req.params.id;
-            let usuarioActualizar = req.body
-            usuarios.update({
-                nombre: req.body.nombre,
-                apellido: req.body.apellido,
-                mail:req.body.mail,
-                nombre_usuario: req.body.nombre_usuario,
-                edad: req.body.edad,
-                contraseña:bcrypt.hashSync(req.body.contraseña, 10),
-                img_usuario:req.body.img_usuario,
-            },{
-                where:{id:userId}
-            })
+            usuarios.update(
+                {
+                    nombre: req.body.nombre,
+                    apellido: req.body.apellido,
+                    mail:req.body.mail,
+                    nombre_usuario: req.body.nombre_usuario,
+                    edad: req.body.edad,
+                    //contraseña:bcrypt.hashSync(req.body.contraseña, 10),
+                    img_usuario:req.file.filename,
+                },
+                {
+                where:{id:userId},
+                },
+                )
                 .then(()=> res.redirect(`/users/profile`))
                 .catch(err => console.log(err))
         
@@ -183,16 +195,13 @@ let usersController = {
         usersId: {
             index: (req, res) => {    
                 const userId = req.params.id;
-                usuarios.findByPk(userId)
-                    .then(resultadoUsuarios=>{
-                        productos.findAll()
-                        .then(resultadoProductos=>{
-                            res.render('user-profile', {usuario:resultadoUsuarios,  productos:resultadoProductos})
-                        })
-                        .catch(error=>{
-                            console.log(error);
-                            res.send(`El error es ${error}`)
-                        })
+                usuarios.findAll({
+                    where:[{ id : userId}],
+                    include:[{model:productos, as:"productosCreados", include:["comentarios"]} ]
+                })
+                    .then(resultado=>{
+                        console.log(resultado)
+                            res.render('user-profile', {usuario:resultado})
                     })
                     .catch(error=>{
                         console.log(error);

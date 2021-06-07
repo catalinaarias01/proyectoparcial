@@ -29,7 +29,8 @@ module.exports = (sequelize, dataTypes)=>{
         },
         fecha_creacion:{
             type: dataTypes.DATE,
-            allowNull:false
+            allowNull:false,
+            defaultValue: sequelize.literal('NOW()')
         },
         usuario_id:{
             type: dataTypes.INTEGER,

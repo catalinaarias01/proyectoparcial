@@ -32,6 +32,7 @@ module.exports = (sequelize, dataTypes)=>{
         fecha_creación:{
               type: dataTypes.DATE,
               allowNull: false,
+              defaultValue: sequelize.literal('NOW()')
           }, 
         img_usuario: {
             type: dataTypes.STRING,
