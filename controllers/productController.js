@@ -185,10 +185,17 @@ let productController = {
             //res.render('product-edit', {productos:productosConId})
         },
         update: (req, res)=>{   
+            
             let productID = req.params.id;
             let productoActualizar = req.body
             productos.update(
-                productoActualizar, 
+                {
+                    nombre_producto: productoActualizar.nombre_producto,
+                    descripcion: productoActualizar.descripcion,
+                    seccion: productoActualizar.seccion,
+                    marca: productoActualizar.marca,
+                    img_url: req.file.path,
+                }, 
                 {
                     where: {
                         id: productID

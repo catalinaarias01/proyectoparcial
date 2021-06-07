@@ -21,7 +21,7 @@
 				<h2 class="products-title">Editar producto</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
-			<form action="/editproducts/<%= productos.id %>" method="POST">
+			<form action="/editproducts/<%= productos.id %>" method="POST" enctype="multipart/form-data">
 
 
 
@@ -47,11 +47,11 @@
 				  </select>
 				</div>
 				
-<!-- 				<div class="mb-3">
+				<div class="mb-3">
 					<label for="img" class="form-label">Imagen:</label><br>
-					<img class="defaultImg" src=<%=productos.img_url%> >
-					<input type="file" id="imagen" class="form-control" name="img_url" accept="image/*">
-				</div> -->
+				
+					<input type="file" id="imagen" class="form-control" name="img_url">
+				</div> 
 				<button type="submit" value="Registrarse" class="btn btn-primary">Submit</button>
 			  </form>
 			</div>
