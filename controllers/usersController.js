@@ -152,13 +152,28 @@ let usersController = {
 
     profile: {
         index: (req, res) =>{
-        
            /* const username = req.body.usuario;*/
             res.render('profile', {productos:productos});
         },
         edit: (req, res) =>{
+
             res.render('profile-edit')
         },
+        store: (req,res) =>{
+            let userId = req.params.id;
+            let usuarioActualizar = req.body
+            usuarios.update(
+                usuarioActualizar, 
+                {
+                    where: {
+                        id: userId
+                    }
+                }
+            )
+                .then(()=> res.redirect(`/users/profile`))
+                .catch(err => console.log(err))
+        
+        }
         
     },
 
@@ -182,9 +197,12 @@ let usersController = {
                     })
                 //usuariosConId = usuarios.filter(usuario => usuario.id == userId)
     
-        }
-    }
+        },
+        
+    },
+   
 }
+
 
 
 module.exports = usersController;
