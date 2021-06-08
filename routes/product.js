@@ -22,6 +22,10 @@ router.post('/addproducts', upload.single('img_url'), productController.store);
 router.get('/editproducts/:id', productController.edit);
 router.post('/editproducts/:id',upload.single('img_url'), productController.update);
 router.post('/eliminar', productController.eliminar);
+//router.get('/seccion/:brochas', seccionController);
+//router.get('/seccion/:ojos', seccionController);
+//router.get('/seccion/:rostro', seccionController);
+//router.get('/seccion/:labios', seccionController)
 
 
 module.exports = router;
