@@ -271,6 +271,15 @@ hr {
   box-shadow: 0 0 5px var(--green);
 }
 
+.eliminar{
+  width: 60%;
+  border: 0;
+}
+
+form.eliminar{
+  background-color: white;
+}
+
 /*====== Footer ======*/
 .main-footer {
   background-color: #fcccd4;
