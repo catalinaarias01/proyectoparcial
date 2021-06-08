@@ -24,28 +24,28 @@
 			<form method="POST" action="/users/profile/edit/<%= locals.id %> " enctype="multipart/form-data" >
 				<div class="mb-3">
 					<label for="nuevaFoto" class="form-label">Cambiar Foto:</label>
-					<input type="file" class="form-control" id="nuevaFoto" name="img_usuario">
+					<input type="file" class="form-control" id="nuevaFoto" name="img_usuario" value="<%=locals.img_usuario%>">
 				  </div>
 				<div class="mb-3">
 					<label for="nuevoNombre" class="form-label">Cambiar nombre:</label>
-					<input type="text" class="form-control" id="nuevoNombre" name="nombre">
+					<input type="text" class="form-control" id="nuevoNombre" name="nombre" value="<%=locals.nombre%>">
 				  </div>
 				  <div class="mb-3">
 					<label for="nuevoApellido" class="form-label">Cambiar apellido:</label>
-					<input type="text" class="form-control" id="nuevoApellido" name="apellido">
+					<input type="text" class="form-control" id="nuevoApellido" name="apellido" value="<%=locals.apellido%>">
 				  </div>
 				  <div class="mb-3">
 					<label for="nuevaEdad" class="form-label">Cambiar edad:</label>
-					<input type="number" class="form-control" id="nuevaEdad" name="edad">
+					<input type="number" class="form-control" id="nuevaEdad" name="edad" value="<%=locals.edad%>">
 				  </div>
 				<div class="mb-3">
 				  <label for="nuevoEmail" class="form-label">Cambiar Email:</label>
-				  <input type="email" class="form-control" id="nuevoEmail" aria-describedby="emailHelp" name="mail">
+				  <input type="email" class="form-control" id="nuevoEmail" aria-describedby="emailHelp" name="mail" value="<%=locals.mail%>">
 				  <div id="emailHelp" class="form-text">Nunca compartiremos tu email con alguien mas.</div>
 				</div>
 				<div class="mb-3">
 					<label for="nuevoUsuario" class="form-label">Nuevo nombre de usuario:</label>
-					<input type="text" class="form-control" id="usuario" name="nombre_usuario">
+					<input type="text" class="form-control" id="usuario" name="nombre_usuario" value="<%=locals.nombre_usuario%>">
 				  </div>
 				<!-- <div class="mb-3">
 				  <label for="nuevaPassword" class="form-label">Nueva contraseña:</label>
