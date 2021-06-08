@@ -19,6 +19,9 @@
 		<div class="row">
 			<div class="col-12">
 				<h2 class="products-title">Editar mi perfil</h2>
+				<% if(locals.errors){ %>
+					<p class="alert" ></p> <%= errors.edit %><p>
+				<% } %> 
 			</div>
 
 			<form method="POST" action="/users/profile/edit/<%= locals.id %> " enctype="multipart/form-data" >

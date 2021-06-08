@@ -189,6 +189,50 @@ let usersController = {
                 .catch(err => console.log(err))
         
         }
+
+        /*let errors = {};
+
+        let userId = req.params.id;
+
+        if (req.body.nombre==req.session.usuario.nombre) {
+            errors.edit = "Tu nuevo nombre debe ser diferente al anterior";
+            res.locals.error = errors;
+            return res.render('profile-edit') 
+        } else if (req.body.apellido==req.session.usuario.apellido) {
+            errors.edit = "Tu nuevo apellido debe ser diferente al anterior";
+            res.locals.error = errors;
+            return res.render('profile-edit') 
+        } else if (req.body.edad==req.session.usuario.edad) {
+            errors.edit = "Tu nueva edad debe ser diferente a la anterior";
+            res.locals.error = errors;
+            return res.render('profile-edit')
+        } else if (req.body.mail==req.session.usuario.mail) {
+            errors.edit = "Tu nuevo email debe ser diferente al anterior";
+            res.locals.error = errors;
+            return res.render('profile-edit')
+        } else if (req.body.nombre_usuario==req.session.usuario.nombre_usuario) {
+            errors.edit = "Tu nuevo usuario debe ser diferente al anterior";
+            res.locals.error = errors;
+            return res.render('profile-edit')
+        } else{usuarios.update(
+            {
+                nombre: req.body.nombre,
+                apellido: req.body.apellido,
+                mail:req.body.mail,
+                nombre_usuario: req.body.nombre_usuario,
+                edad: req.body.edad,
+                //contraseña:bcrypt.hashSync(req.body.contraseña, 10),
+                img_usuario:req.file.filename,
+            },
+            {
+            where:{id:userId},
+            },
+            )
+            .then(()=> res.redirect(`/users/profile`))
+            .catch(err => console.log(err))
+    
+        } console.log(errors)
+    } */     
         
     },
 
