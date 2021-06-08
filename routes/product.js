@@ -20,7 +20,8 @@ router.get('/search', productController.search);
 router.get('/addproducts', productController.add);
 router.post('/addproducts', upload.single('img_url'), productController.store);
 router.get('/editproducts/:id', productController.edit);
-router.post('/editproducts/:id',upload.single('img_url'), productController.update)
+router.post('/editproducts/:id',upload.single('img_url'), productController.update);
+router.post('/eliminar', productController.eliminar);
 
 
 module.exports = router;

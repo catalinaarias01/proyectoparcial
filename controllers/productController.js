@@ -204,6 +204,13 @@ let productController = {
                 .then(()=> res.redirect(`/product/${productID}`))
                 .catch(err => console.log(err))
         },
+        eliminar: (req, res) =>{
+            /*let productID = req.params.id;
+            
+            productos.destroy({where: {id: productID}})
+            return res.redirect('index') */
+            
+        },
         comment: (req,res) =>{
        
             if(req.session.usuario != undefined){
