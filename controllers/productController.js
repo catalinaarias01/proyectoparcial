@@ -233,7 +233,7 @@ let productController = {
         },
         seccion:(req,res)=>{
             const seccionParam = req.params.seccion;
-            products.findAll({
+            productos.findAll({
                 where:[{seccion:seccionParam}]
             }) 
             .then(resultado=>{
