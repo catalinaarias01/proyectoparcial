@@ -39,7 +39,9 @@
 						<% } %>
 					</div>
 				
-
+			<% if(locals.nombre){ %>
+				<p class="alert" ></p> Ya estás registrado <p>
+			<% } else{%> 
 			<form method="POST" action="/users/register">
 				<div class="mb-3">
 					<label for="nombre" class="form-label">Nombre:</label>
@@ -75,7 +77,7 @@
 			</div>
 		</div>
 
-
+	<% }%>
 	<!-- footer -->
 	<%- include('./partials/footer.ejs')  %> 
 	<!-- /footer -->

@@ -35,7 +35,7 @@ let productController = {
         .then(resultado=>{
             usuarios.findAll()
             .then(usuarios=>{
-
+                console.log(resultado.comentarios)
                 res.render("product",{productos:resultado, usuarios:usuarios})
             })
         })
@@ -205,10 +205,10 @@ let productController = {
                 .catch(err => console.log(err))
         },
         eliminar: (req, res) =>{
-            /*let productID = req.params.id;
+            //let productID = req.params.id;
             
-            productos.destroy({where: {id: productID}})
-            return res.redirect('index') */
+            //productos.destroy({where: {id: productID}})
+            //.then()=> return res.redirect('/') 
             
         },
         comment: (req,res) =>{

@@ -16,11 +16,11 @@ let usersController = {
 
     register: {
         index: (req, res) =>{
-            // Control de acceso
+            //Control de acceso
             //if(req.session.user != undefined){
-              //  return res.redirect('/')
+               //return res.redirect('/')
             //} else {
-              //  return res.render('register')
+               //return res.render('register')
               
         res.render("register")
         },
@@ -95,6 +95,7 @@ let usersController = {
                                 console.log(user)
                             })
                             .catch( err => console.log(err))
+                        
                     }
                 })
                 .catch( err => console.log(err)) 
@@ -185,7 +186,10 @@ let usersController = {
                 where:{id:userId},
                 },
                 )
-                .then(()=> res.redirect(`/users/profile`))
+                .then(()=>{
+                    req.session.usuario = userId;
+                    res.redirect(`/users/profile`)
+                })
                 .catch(err => console.log(err))
         
         }
