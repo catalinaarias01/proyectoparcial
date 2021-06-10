@@ -230,6 +230,15 @@ let productController = {
             } else {
                  return res.render('login')
             }
+        },
+        seccion:(req,res)=>{
+            const seccionParam = req.params.seccion;
+            products.findAll({
+                where:[{seccion:seccionParam}]
+            }) 
+            .then(resultado=>{
+                res.render("product-secciones",{productos:resultado})
+            })
         }
     }
 
