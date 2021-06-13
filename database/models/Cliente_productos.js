@@ -14,15 +14,17 @@ module.exports = (sequelize, dataTypes)=>{
         },
         usuario_id:{
             type:dataTypes.INTEGER,
-            allowNull:false
+            allowNull:false,
         }
     };
     let config = {
         tableName: "cliente_productos",
         timestamps: false,
-        underscored: true
+        underscored: true,
+        role:sequelize.string
     }
 
-    const Cliente_productos = sequelize.define(alias, cols, config)
+    const Cliente_productos = sequelize.define(alias, cols, config);
+    
     return Cliente_productos;
 }

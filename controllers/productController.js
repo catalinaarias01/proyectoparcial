@@ -12,6 +12,7 @@ let productController = {
     index: (req, res) =>{
         productos.findAll({include:[{association:"usuarioCreadores"},{association:"comentarios"}]})
             .then(productos=>{
+                console.log(req.session.usuario)
                 res.render('index', {productos:productos})
             })
             .catch(error=>{
@@ -24,7 +25,7 @@ let productController = {
     product: (req, res) =>{
         const productId = req.params.id;
         productos.findByPk(productId,{
-            include:["comentarios","usuarioCreadores"],
+            include:["comentarios","usuarioCreadores","usuarios"],
             order:[["comentarios",'created_at','desc']],
            
                 
@@ -33,10 +34,10 @@ let productController = {
             
         })
         .then(resultado=>{
+            console.log(resultado.usuarios)
             usuarios.findAll()
             .then(usuarios=>{
-                console.log(resultado.comentarios)
-                res.render("product",{productos:resultado, usuarios:usuarios})
+                res.render("product",{productos:resultado, usuarios:usuarios, usuariosLike:resultado.usuarios})
             })
         })
         /*const productID = req.params.id;
@@ -141,7 +142,12 @@ let productController = {
     }, 
 
         add: (req, res) =>{
-            res.render('product-add')
+            if(req.session.usuario != undefined){
+                return res.render('product-add')
+            } else {
+                return res.redirect('/')
+            }
+
         },
         store: (req, res) =>{
             let producto = {
@@ -156,29 +162,26 @@ let productController = {
 
             
             productos.create(producto)
-            .then(products => {
-                let cliente_producto = {
-                    producto_id:products.id,
-                    usuario_id:req.session.usuario.id,
-                }
-                cliente_productos.create(cliente_producto)
-                .then(resultado=>{
-                    res.redirect('/')
+            .then(resultado => {
+                    res.redirect("/")
                 })
-                .catch( error => console.log(error)) 
-            })
+
             .catch( error => console.log(error)) 
         },
         edit: (req, res) =>{
             const productID = req.params.id;
-            productos.findByPk(productID)
-            .then(resultadoProductos=>{
-                res.render('product-edit', {productos:resultadoProductos})
-            })
-            .catch(error=>{
-                console.log(error);
-                res.send(`El error es ${error}`)
-            })
+            if(req.session.usuario != undefined){
+                productos.findByPk(productID)
+                .then(resultadoProductos=>{
+                    res.render('product-edit', {productos:resultadoProductos})
+                })
+                .catch(error=>{
+                    console.log(error);
+                    res.send(`El error es ${error}`)
+                })
+            } else {
+                return res.redirect(`/product/${productID}`)
+            }
             //const productosConId = productos.filter(producto=>producto.id==productID)
 
             //res.render('product-edit', {productos:productosConId})
@@ -205,10 +208,17 @@ let productController = {
                 .catch(err => console.log(err))
         },
         eliminar: (req, res) =>{
-            //let productID = req.params.id;
+            let productID = req.params.id;
             
-            //productos.destroy({where: {id: productID}})
-            //.then()=> return res.redirect('/') 
+            cliente_productos.destroy({where:{producto_id:productID}})
+            .then(()=> {
+                comentarios.destroy({where:{producto_id:productID}})
+                .then(()=>{
+                    productos.destroy({where: {id: productID}})
+                    return res.redirect('/') 
+                })
+            })
+  
             
         },
         comment: (req,res) =>{
@@ -238,6 +248,26 @@ let productController = {
             }) 
             .then(resultado=>{
                 res.render("product-secciones",{productos:resultado})
+            })
+        },
+        like:(req,res) =>{
+            const productId = req.params.id;
+            const producto_likeado = {
+                producto_id:productId,
+                usuario_id:req.session.usuario.id,
+            }
+            cliente_productos.create(producto_likeado)
+            .then(resultado=>{
+                res.redirect(`/product/${productId}`)
+            })
+        },
+        unlike:(req,res) =>{
+            const productId = req.params.id;
+
+            cliente_productos.destroy({where:{producto_id:productId}})
+
+            .then(resultado=>{
+                res.redirect(`/product/${productId}`)
             })
         }
     }

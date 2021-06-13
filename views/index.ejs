@@ -36,10 +36,10 @@
 								<img src="/images/products/<%= productos[i].img_url %>" alt="producto">
 							</figure>
 							<article class="product-box_data">
-								<h2><%= productos[i].nombre_producto %></h2>
-								<p> Marca: <%= productos[i].marca %></p>
-								<p> Creado por: <%= productos[i].usuarioCreadores.nombre_usuario %></p>
-								<p><%= productos[i].descripcion %></p>
+								<h2><%= productos[i].nombre_producto %></h2><br>
+								<p> Marca: <%= productos[i].marca %></p><br>
+								<p> Creado por: <%= productos[i].usuarioCreadores.nombre_usuario %></p><br>
+								<p><%= productos[i].descripcion %></p><br>
 								<p>Comentarios: <%=productos[i].comentarios.length%></p>
 							</article>
 						</a>

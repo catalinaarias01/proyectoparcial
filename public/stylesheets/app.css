@@ -633,3 +633,15 @@ textarea.form-input {
   width:40%;
   margin-bottom:10px;
 }
+
+#like-form{
+  background-color: white;
+  display:flex;
+  align-items: flex-start;
+  margin:0px;
+  padding: 15px 15px 15px 40px;
+}
+
+#like-form button{
+  margin:0px !important;
+}

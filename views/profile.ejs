@@ -32,9 +32,9 @@
 				</div>
 				<div>
 					<ul class="">
-						<li>8 productos</li>
-						<li>200 seguidores</li>
-						<li>300 comentarios</li>
+						<li><%=productos.length%> producto<%= productos.length>1 ? "s" : "" %> creado<%= productos.length>1 ? "s" : "" %></li>
+					
+						<li></li>
 					</ul>
 					<p><b>Mail:</b> <%=locals.mail%> <b>Edad:</b> <%=locals.edad%></p>
 					<p></p>
@@ -48,25 +48,45 @@
 	<div class= "container products-wrapper">
 		<div class="row">
 			<div class="col-12"><h2 class="products-title">Mis productos</h2></div>
-	<% for(i=0; i < productos.length; i++){ %>
-		<div class="col-12 col-sm-6 col-lg-3 product">
-			<section class="product-box">
-				<a href="/product/<%=productos[i].id %>">
-					<figure class="product-box_image">
-						<img src="/images/products/<%= productos[i].img_url %>" alt="producto">
-					</figure>
-					<article class="product-box_data">
-						<h2><%= productos[i].nombre %></h2>
-						<p> Marca: <%= productos[i].marca %></p>
-						<p><%= productos[i].descripcion %></p>
-						<p>Comentarios: <%=productos[0].comentarios.length%></p>
-					</article>
-				</a>
-			</section>
+				<% for(let i=0; i < productos.length; i++){ %>
+					<div class="col-12 col-sm-6 col-lg-3 product">
+						<section class="product-box">
+							<a href="/product/<%=productos[i].id %>">
+								<figure class="product-box_image">
+									<img src="/images/products/<%= productos[i].img_url %>" alt="producto">
+								</figure>
+								<article class="product-box_data">
+									<h2><%= productos[i].nombre_producto %></h2>
+									<p> Marca: <%= productos[i].marca %></p>
+									<p><%= productos[i].descripcion %></p>
+									<p>Comentarios:</p>
+								</article>
+							</a>
+						</section>
+					</div>
+				<% } %>
 		</div>
-	<% } %>
-</div>
-</div>
+		<div class="row">
+			<div class="col-12"><h2 class="products-title">Mis productos favoritos</h2></div>
+				<% for(let i=0; i < productosLikeados.length; i++){ %>
+					<div class="col-12 col-sm-6 col-lg-3 product">
+						<section class="product-box">
+							<a href="/product/<%=productosLikeados[i].id %>">
+								<figure class="product-box_image">
+									<img src="/images/products/<%= productosLikeados[i].img_url %>" alt="producto">
+								</figure>
+								<article class="product-box_data">
+									<h2><%= productos[i].nombre_producto %></h2><br>
+									<p> Marca: <%= productosLikeados[i].marca %></p><br>
+									<p><%= productosLikeados[i].descripcion %></p><br>
+									<p>Comentarios:</p>
+								</article>
+							</a>
+						</section>
+					</div>
+				<% } %>
+		</div>
+	</div>
 	<!-- /Mis productos -->
 
 

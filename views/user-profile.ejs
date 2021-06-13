@@ -30,6 +30,11 @@
 
 					<p><b>Usuario:</b> <%=usuario[0].nombre_usuario%> <b>Edad:</b> <%=usuario[0].edad%></p>
 					<p><b>Mail: </b><%=usuario[0].mail%></p>
+					<p><%=usuario[0].productosCreados.length%> producto<%= usuario[0].productosCreados.length>1 ? "s" : "" %> creado<%= usuario[0].productosCreados.length>1 ? "s" : "" %></p>
+					<p>Comentarios: <% for (let i = 0; i < usuario[0].productosCreados.length; i++) {%>
+									<%= usuario[0].productosCreados[i].comentarios.length%>
+								<%}%></p>
+		
 				</div>
 			</div>
 		</div>

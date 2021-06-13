@@ -6,3 +6,8 @@ body {
 a {
   color: #00B7FF;
 }
+
+.like-form{
+  border:none;
+  background-color: none;
+}

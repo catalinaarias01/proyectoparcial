@@ -29,11 +29,16 @@ module.exports = (sequelize, dataTypes)=>{
         contraseña: {
             type: dataTypes.STRING,
         },
-        fecha_creación:{
+        created_at:{
               type: dataTypes.DATE,
               allowNull: false,
               defaultValue: sequelize.literal('NOW()')
           }, 
+          updated_at:{
+            type: dataTypes.DATE,
+            allowNull: true,
+            defaultValue: sequelize.literal('NOW()')
+        }, 
         img_usuario: {
             type: dataTypes.STRING,
         },

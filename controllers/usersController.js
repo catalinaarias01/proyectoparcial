@@ -5,6 +5,7 @@
 const db = require('../database/models');
 const productos = db.Productos;
 const comentarios = db.Comentarios;
+const cliente_productos = db.Cliente_productos;
 const usuarios = db.Usuarios;
 const bcrypt = require('bcryptjs');
 const { localsName } = require('ejs');
@@ -17,12 +18,11 @@ let usersController = {
     register: {
         index: (req, res) =>{
             //Control de acceso
-            //if(req.session.user != undefined){
-               //return res.redirect('/')
-            //} else {
-               //return res.render('register')
-              
-        res.render("register")
+            if(req.session.usuario != undefined){
+                return res.redirect('/')
+            } else {
+                return res.render('register')
+            }
         },
         store: (req, res) =>{
 
@@ -105,13 +105,13 @@ let usersController = {
 
     login: {
         index: (req, res) =>{
-            // Control de acceso
-            //if(req.session.user != undefined){
-             //   return res.redirect('/')
-            //} else {
-             //   return res.render('login')
-            //} 
-            res.render('login')
+              //Control de acceso
+              if(req.session.usuario != undefined){
+                return res.redirect('/')
+            } else {
+                return res.render('login')
+            }
+            
         },
         logueado: (req,res)=>{
             // Variable para guardar errores
@@ -153,13 +153,13 @@ let usersController = {
     profile: {
         index: (req, res) =>{
            /* const username = req.body.usuario;*/
-           productos.findAll({
-            where:[{ usuario_id : req.session.usuario.id}],
-            include:["comentarios"]
+           usuarios.findAll({
+            where:[{ id : req.session.usuario.id}],
+            include:["productos", "productosCreados"]
         })
             .then(resultado=>{
-                console.log(resultado)
-                res.render('profile', {productos:resultado});
+                console.log(resultado[0].productos)
+                res.render('profile', {productos:resultado[0].productosCreados, productosLikeados:resultado[0].productos});
             })
             .catch(error=>{
                 console.log(error);
@@ -172,6 +172,15 @@ let usersController = {
         },
         store: (req,res) =>{
             let userId = req.params.id;
+            let usuario = {
+                nombre: req.body.nombre,
+                apellido: req.body.apellido,
+                mail:req.body.mail,
+                nombre_usuario: req.body.nombre_usuario,
+                edad: req.body.edad,
+                //contraseña:bcrypt.hashSync(req.body.contraseña, 10),
+                img_usuario:req.file.filename,
+            } 
             usuarios.update(
                 {
                     nombre: req.body.nombre,
@@ -187,7 +196,8 @@ let usersController = {
                 },
                 )
                 .then(()=>{
-                    req.session.usuario = userId;
+                    req.session.destroy()
+                    req.session.usuario = usuario;
                     res.redirect(`/users/profile`)
                 })
                 .catch(err => console.log(err))

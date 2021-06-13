@@ -31,7 +31,19 @@
 			<div class="row">
 				<article class="col-12 col-lg-8 product-detail-info">
 					<img src="/images/products/<%= productos.img_url %>" alt="" class="product-detail-img">
+				
 					<p class="product-detail-description"><b>Cargado por: </b><a href="/users/<%=productos.usuarioCreadores.id%>"><%=productos.usuarioCreadores.nombre_usuario%></a></p>
+					<% if(locals.nombre!=undefined) { %> 
+							<form action="/unlike/<%=productos.id%>" method="POST" id="like-form">
+								<button type="submit" class="btn btn-primary" >Unlike</button>
+							</form>
+		
+							<form action="/like/<%=productos.id%>" method="POST" id="like-form">
+								<button type="submit" class="btn btn-primary" >Like</button>
+							</form>
+
+					<% } %> 
+					<p class="product-detail-description">Likeado por <%= usuariosLike.length%> persona<%= usuariosLike.length == 1  ? "" : "s" %> </p> 
 					<p class="product-detail-description"><%= productos.descripcion%></p>
 				</article>
 				<div class="col-12 col-lg-4">

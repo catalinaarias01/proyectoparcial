@@ -27,9 +27,14 @@ module.exports = (sequelize, dataTypes)=>{
             type:dataTypes.STRING,
             allowNull:false
         },
-        fecha_creacion:{
+        created_at:{
             type: dataTypes.DATE,
             allowNull:false,
+            defaultValue: sequelize.literal('NOW()')
+        },
+        updated_at:{
+            type: dataTypes.DATE,
+            allowNull:true,
             defaultValue: sequelize.literal('NOW()')
         },
         usuario_id:{
@@ -58,11 +63,13 @@ module.exports = (sequelize, dataTypes)=>{
         }),
         Productos.belongsTo(models.Usuarios,{
             as:"usuarioCreadores",
-            foreignKey:"usuario_id"
+            foreignKey:"usuario_id",
+            onDelete:'cascade'
         }),
         Productos.hasMany(models.Comentarios, {
             as:"comentarios",
-            foreignKey:"producto_id"
+            foreignKey:"producto_id",
+            onDelete:'cascade',
         })
     }
     return Productos;
