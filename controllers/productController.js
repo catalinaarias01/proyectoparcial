@@ -18,8 +18,7 @@ let productController = {
             .catch(error=>{
                 console.log(error);
                 res.send(`El error es ${error}`)
-            })
-    },
+            })},
     
 
     product: (req, res) =>{

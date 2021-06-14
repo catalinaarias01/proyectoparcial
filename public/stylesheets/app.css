@@ -492,7 +492,7 @@ form{
   /* border: 10px; */
   text-align: left;
   border-radius: 2%;
-  width: 40%;
+  width: 40% !important;
 }
 
 .mb-3 {

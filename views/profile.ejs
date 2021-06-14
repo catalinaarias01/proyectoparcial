@@ -32,7 +32,7 @@
 				</div>
 				<div>
 					<ul class="">
-						<li><%=productos.length%> producto<%= productos.length>1 ? "s" : "" %> creado<%= productos.length>1 ? "s" : "" %></li>
+						<li><%=productos.length%> producto<%= productos.length>1 || productos.length == 0 ? "s" : "" %> creado<%= productos.length>1 || productos.length == 0 ? "s" : "" %></li>
 					
 						<li></li>
 					</ul>
@@ -45,9 +45,16 @@
 	<!-- /Datos del usuario -->
 
 	<!-- Mis productos -->
+	
 	<div class= "container products-wrapper">
 		<div class="row">
 			<div class="col-12"><h2 class="products-title">Mis productos</h2></div>
+			<% if (productos.length == 0){%>
+				<h2>No has creado ningun producto.</h2>
+
+			<%} else{ %>
+
+			
 				<% for(let i=0; i < productos.length; i++){ %>
 					<div class="col-12 col-sm-6 col-lg-3 product">
 						<section class="product-box">
@@ -65,9 +72,16 @@
 						</section>
 					</div>
 				<% } %>
+				<%} %> 
 		</div>
+	
 		<div class="row">
 			<div class="col-12"><h2 class="products-title">Mis productos favoritos</h2></div>
+			<% if (productosLikeados.length == 0){%>
+				<h2>No has likeado ningun producto.</h2>
+
+			<%} else{ %>
+
 				<% for(let i=0; i < productosLikeados.length; i++){ %>
 					<div class="col-12 col-sm-6 col-lg-3 product">
 						<section class="product-box">
@@ -85,6 +99,7 @@
 						</section>
 					</div>
 				<% } %>
+				<%} %> 
 		</div>
 	</div>
 	<!-- /Mis productos -->

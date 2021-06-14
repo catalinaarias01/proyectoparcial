@@ -178,7 +178,7 @@ let usersController = {
                 mail:req.body.mail,
                 nombre_usuario: req.body.nombre_usuario,
                 edad: req.body.edad,
-                //contraseña:bcrypt.hashSync(req.body.contraseña, 10),
+                contraseña:"bcrypt.hashSync(req.body.contraseña, 10)",
                 img_usuario:req.file.filename,
             } 
             usuarios.update(
@@ -196,7 +196,7 @@ let usersController = {
                 },
                 )
                 .then(()=>{
-                    req.session.destroy()
+                   
                     req.session.usuario = usuario;
                     res.redirect(`/users/profile`)
                 })
