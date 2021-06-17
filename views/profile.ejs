@@ -34,7 +34,7 @@
 					<ul class="">
 						<li><%=productos.length%> producto<%= productos.length>1 || productos.length == 0 ? "s" : "" %> creado<%= productos.length>1 || productos.length == 0 ? "s" : "" %></li>
 					
-						<li></li>
+						<li>Comentarios:<%=comentariosUsuario.length%></li>
 					</ul>
 					<p><b>Mail:</b> <%=locals.mail%> <b>Edad:</b> <%=locals.edad%></p>
 					<p></p>
@@ -90,7 +90,7 @@
 									<img src="/images/products/<%= productosLikeados[i].img_url %>" alt="producto">
 								</figure>
 								<article class="product-box_data">
-									<h2><%= productos[i].nombre_producto %></h2><br>
+									<h2><%= productosLikeados[i].nombre_producto %></h2><br>
 									<p> Marca: <%= productosLikeados[i].marca %></p><br>
 									<p><%= productosLikeados[i].descripcion %></p><br>
 									<p>Comentarios:</p>

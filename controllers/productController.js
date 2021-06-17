@@ -26,16 +26,13 @@ let productController = {
         productos.findByPk(productId,{
             include:["comentarios","usuarioCreadores","usuarios"],
             order:[["comentarios",'created_at','desc']],
-           
-                
-               
             //order: [[comentarios, 'created_at', 'desc']],
             
         })
         .then(resultado=>{
-            console.log(resultado.usuarios)
             usuarios.findAll()
             .then(usuarios=>{
+                
                 res.render("product",{productos:resultado, usuarios:usuarios, usuariosLike:resultado.usuarios})
             })
         })
@@ -263,7 +260,7 @@ let productController = {
         unlike:(req,res) =>{
             const productId = req.params.id;
 
-            cliente_productos.destroy({where:{producto_id:productId}})
+            cliente_productos.destroy({where:{producto_id:productId, usuario_id:req.session.usuario.id}})
 
             .then(resultado=>{
                 res.redirect(`/product/${productId}`)

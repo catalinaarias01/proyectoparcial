@@ -155,12 +155,14 @@ let usersController = {
            /* const username = req.body.usuario;*/
            usuarios.findAll({
             where:[{ id : req.session.usuario.id}],
-            include:["productos", "productosCreados"]
+            include:["productos", "productosCreados","comentarios"]
         })
             .then(resultado=>{
-                console.log(resultado[0].productos)
-                res.render('profile', {productos:resultado[0].productosCreados, productosLikeados:resultado[0].productos});
+
+                    console.log(resultado[0].comentarios)
+                    res.render('profile', {productos:resultado[0].productosCreados, productosLikeados:resultado[0].productos, comentariosUsuario:resultado[0].comentarios});
             })
+
             .catch(error=>{
                 console.log(error);
                 res.send(`El error es ${error}`)
@@ -173,12 +175,13 @@ let usersController = {
         store: (req,res) =>{
             let userId = req.params.id;
             let usuario = {
+                id:req.session.id,
                 nombre: req.body.nombre,
                 apellido: req.body.apellido,
                 mail:req.body.mail,
-                nombre_usuario: req.body.nombre_usuario,
+                nombre_usuario: req.body.nombre_usuario,                                         
                 edad: req.body.edad,
-                contraseña:"bcrypt.hashSync(req.body.contraseña, 10)",
+                contraseña:bcrypt.hashSync(req.body.contraseña, 10),
                 img_usuario:req.file.filename,
             } 
             usuarios.update(
@@ -188,11 +191,11 @@ let usersController = {
                     mail:req.body.mail,
                     nombre_usuario: req.body.nombre_usuario,
                     edad: req.body.edad,
-                    //contraseña:bcrypt.hashSync(req.body.contraseña, 10),
+                    contraseña:bcrypt.hashSync(req.body.contraseña, 10),
                     img_usuario:req.file.filename,
                 },
                 {
-                where:{id:userId},
+                where:{id:req.session.id},
                 },
                 )
                 .then(()=>{
@@ -255,11 +258,20 @@ let usersController = {
                 const userId = req.params.id;
                 usuarios.findAll({
                     where:[{ id : userId}],
-                    include:[{model:productos, as:"productosCreados", include:["comentarios"]} ]
+                    include:[{model:productos, as:"productosCreados", include:["comentarios"]}]
                 })
                     .then(resultado=>{
-                        console.log(resultado)
-                            res.render('user-profile', {usuario:resultado})
+                        comentarios.findAll({
+                            where:[{usuario_id:req.params.id}]
+                        })
+                        .then(resultadoComentarios=>{
+                            res.render('user-profile', {usuario:resultado, comentarios:resultadoComentarios})
+                        })
+                       
+                    })
+                    .catch(error=>{
+                        console.log(error);
+                        res.send(`El error es ${error}`)
                     })
                     .catch(error=>{
                         console.log(error);
