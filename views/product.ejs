@@ -46,11 +46,18 @@
 							<% } %> 
 					<% } %> 
 					<p class="product-detail-description">Likeado por <%= usuariosLike.length%> persona<%= usuariosLike.length == 1  ? "" : "s" %> </p> 
+					<p class="product-detail-description"><b>Cargado por: </b><a href="/users/<%=productos.usuarioCreadores.id%>"><%=productos.usuarioCreadores.nombre_usuario%></a></p>
 					<p class="product-detail-description"><%= productos.descripcion%></p>
 				</article>
 				<div class="col-12 col-lg-4">
 					<section class="comments">
-						- <%for (let i = 0; i < productos.comentarios.length; i++) {%>
+
+						<% if (productos.comentarios.length==0) { %>
+							<p class="product-detail-description">¡Se el primero en comentar!</p> 
+						<%} else { %>
+							
+						
+						<%for (let i = 0; i < productos.comentarios.length; i++) {%>
                         
 							<article>
 								
@@ -68,6 +75,7 @@
 	
 							</article>
 						<%}%>
+						<% } %>
 					 </section> 
 				
 					<form class="form agregar" action="/product/<%=productos.id%>/addcomment" method="POST">

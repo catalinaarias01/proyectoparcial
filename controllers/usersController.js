@@ -86,7 +86,7 @@ let usersController = {
                             nombre_usuario:req.body.usuario,
                             edad:req.body.edad,
                             contraseña: bcrypt.hashSync(req.body.contraseña, 10),
-                            img_usuario:""
+                            img_usuario: "perfil.jpeg"
                         }
                         console.log(usuario)
                         usuarios.create(usuario)
