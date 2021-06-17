@@ -59,7 +59,12 @@ let usersController = {
                 res.locals.errors = errors
     
                 return res.render('register')
-            } else if(req.body.repetir == ""){
+            } else if (req.body.contraseña.length < 4){ // El password no este vacio
+                errors.register = "Contraseña debe tener más de 3 caracteres"
+                res.locals.errors = errors
+    
+                return res.render('register')
+            }else if(req.body.repetir == ""){
                 errors.register = "Re escribir contraseña no puede estar vacio"
                 res.locals.errors = errors
     
