@@ -550,6 +550,12 @@ textarea.form-input {
   margin-left: 39% !important;
   margin-bottom: 3% !important;
 }
+.recordame{
+  text-align: center;
+}
+.checkbox{
+ vertical-align: middle;
+}
 
 /*====== Search ======*/
 .search-container{
