@@ -129,7 +129,7 @@ let usersController = {
             .then( (resultado) => {
                 if(resultado==null){
                     errors.login = "Email es incorrecto";
-                    res.locals.error = errors;
+                    res.locals.errors = errors;
                     return res.render('login') 
                 } else if (bcrypt.compareSync(req.body.contraseña, resultado.contraseña) == false){
                     errors.login = "Contraseña Incorrecta";
@@ -178,6 +178,7 @@ let usersController = {
             res.render('profile-edit')
         },
         store: (req,res) =>{
+            
             let userId = req.params.id;
             let usuario = {
                 id:req.session.id,
@@ -189,6 +190,17 @@ let usersController = {
                 contraseña:bcrypt.hashSync(req.body.contraseña, 10),
                 img_usuario:req.file.filename,
             } 
+            let errors = {};
+            if (req.body.contraseña.length <4) {
+                    errors.edit = "La nueva contraseña debe tener más 3 caracteres";
+                    res.locals.errors = errors;
+                    return res.render('profile-edit') 
+            } else if (req.body.contraseña!=req.body.contraseñaRepetida) {
+                    errors.edit = "Contraseña y repetir contraseña no coinciden";
+                    res.locals.errors = errors;
+                    return res.render('profile-edit') 
+            }else{
+
             usuarios.update(
                 {
                     nombre: req.body.nombre,
@@ -204,12 +216,13 @@ let usersController = {
                 },
                 )
                 .then(()=>{
-                   
-                    req.session.usuario = usuario;
-                    res.redirect(`/users/profile`)
+                
+                        req.session.usuario = usuario;
+                        res.redirect(`/users/profile`)
+                    
                 })
                 .catch(err => console.log(err))
-        
+            }
         }
 
         /*let errors = {};
