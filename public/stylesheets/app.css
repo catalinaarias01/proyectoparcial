@@ -225,7 +225,7 @@ hr {
   flex-wrap: wrap;
 }
 
-.product-box_data p {
+.product-box_data li {
   font-size: 1.5em;
   color: var(--gray);
   margin: 0;
@@ -235,7 +235,7 @@ hr {
   font-family: "Sen";
 }
 
-.product-box_data i {
+/* .product-box_data i {
   color: var(--green);
   font-size: 1.8em;
   width: 35px;
@@ -251,7 +251,7 @@ hr {
   justify-content: center;
   align-items: center;
   transition: 300ms;
-}
+} */
 
 .noproducts {
   text-align: center
@@ -261,15 +261,15 @@ hr {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
-.product-box:hover p {
-  height: 36px;
+.product-box:hover li {
+  height: 45px;
   margin-top: 15px;
 }
 
-.product-box:hover i {
+/* .product-box:hover li {
   transform: rotate(360deg);
   box-shadow: 0 0 5px var(--green);
-}
+} */
 
 .eliminar{
   width: 60%;

@@ -37,10 +37,12 @@
 							</figure>
 							<article class="product-box_data">
 								<h2><%= productos[i].nombre_producto %></h2><br>
-								<p> Marca: <%= productos[i].marca %></p><br>
-								<p> Creado por: <%= productos[i].usuarioCreadores.nombre_usuario %></p><br>
-								<p><%= productos[i].descripcion %></p><br>
-								<p>Comentarios: <%=productos[i].comentarios.length%></p>
+								<ul>
+								<li> Marca: <%= productos[i].marca %></li> 
+								<li> Creado por: <%= productos[i].usuarioCreadores.nombre_usuario %></li>
+								<li><%= productos[i].descripcion %></li>
+								<li>Comentarios: <%=productos[i].comentarios.length%></li>
+							</ul>
 							</article>
 						</a>
 					</section>
@@ -65,7 +67,7 @@
 							<img src="/images/products/<%= productos[i].img_url %>" alt="producto">
 						</figure>
 						<article class="product-box_data">
-							<h2><%= productos[i].nombre_producto%></h2>
+							<h2><%= productos[i].nombre_producto%></h2><br>
 							<p><%= productos[i].descripcion%></p>
 							<p>Comentarios: 12</p>
 						</article>

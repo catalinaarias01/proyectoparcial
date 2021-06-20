@@ -14,7 +14,6 @@
 	<% } %>
 	<!-- /Header -->
 
-
 	<div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
@@ -31,9 +30,12 @@
                                 </figure>
                                 <article class="product-box_data">
                                     <h2><%= productos[i].nombre_producto %></h2>
-                                    <p> Marca: <%= productos[i].marca %></p>
-                                    <p><%= productos[i].descripcion %></p>
-                                    <p>Comentarios: 12</p>
+                                    <ul>
+                                    <li> Marca: <%= productos[i].marca %></li>
+                                    <li><%= productos[i].descripcion %></li>
+                                    <li>Comentarios: 12</li>
+                                    <li> Creado por: <%=productos[i].usuarioCreadores.nombre_usuario %></li>
+                                </ul>
                                 </article>
                             </a>
                         </section>

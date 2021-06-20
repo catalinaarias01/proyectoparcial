@@ -32,8 +32,7 @@ let productController = {
         .then(resultado=>{
             usuarios.findAll()
             .then(usuarios=>{
-                
-                res.render("product",{productos:resultado, usuarios:usuarios, usuariosLike:resultado.usuarios})
+              res.render("product",{productos:resultado, usuarios:usuarios, usuariosLike:resultado.usuarios})
             })
         })
         /*const productID = req.params.id;
