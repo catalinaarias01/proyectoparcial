@@ -93,7 +93,7 @@ let productController = {
                     {descripcion: {[op.like]: `%${searchResults}%`}},
                     {seccion: {[op.like]: `%${searchResults}%`}}
                 ]
-            }
+            }, include:["usuarioCreadores","comentarios"]
         })
             .then(resultadoSearch=>{
                 res.render('search-results', {productos:resultadoSearch})
