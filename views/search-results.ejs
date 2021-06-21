@@ -31,11 +31,11 @@
                                 <article class="product-box_data">
                                     <h2><%= productos[i].nombre_producto %></h2>
                                     <ul>
-                                    <li> Marca: <%= productos[i].marca %></li>
-                                    <li><%= productos[i].descripcion %></li>
-                                    <li>Comentarios: 12</li>
-                                    <li> Creado por: <%=productos[i].usuarioCreadores.nombre_usuario %></li>
-                                </ul>
+                                        <li> Marca: <%= productos[i].marca %></li>
+                                        <li><%= productos[i].descripcion %></li>
+                                        <li>Comentarios: <%=productos[i].comentarios.length%></li>
+                                        <li> Creado por: <a href="/users/profile/<%=productos[i].usuarioCreadores.id%>"><%=productos[i].usuarioCreadores.nombre_usuario %></a></li>
+                                     </ul>
                                 </article>
                             </a>
                         </section>

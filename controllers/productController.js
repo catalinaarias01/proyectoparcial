@@ -13,7 +13,7 @@ const op = db.Sequelize.Op;
 let productController = {
 
     index: (req, res) =>{
-        productos.findAll({include:["usuarioCreadores","comentarios"],order:[["created_at","desc"]]})
+        productos.findAll({include:["usuarioCreadores","comentarios"],order:[["created_at","desc"]], limit:8})
             .then(resultado=>{
                 productos.findAll({
                     attributes: {
@@ -31,7 +31,8 @@ let productController = {
                     },
                     order:[
                         [sequelize.literal('comentariosCount'),'DESC']
-                    ]
+                    ],
+                    limit:8
                 })
                 .then(masComentados=>{
                     res.render('index', {productos:resultado, productosComentados:masComentados})
@@ -274,7 +275,9 @@ let productController = {
         seccion:(req,res)=>{
             const seccionParam = req.params.seccion;
             productos.findAll({
-                where:[{seccion:seccionParam}]
+                where:[{seccion:seccionParam}],
+                include:["usuarioCreadores","comentarios"],
+                order:[["created_at","desc"]]
             }) 
             .then(resultado=>{
                 res.render("product-secciones",{productos:resultado})

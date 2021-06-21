@@ -39,7 +39,7 @@
 								<h2><%= productos[i].nombre_producto %></h2><br>
 								<ul>
 									<li> Marca: <%= productos[i].marca %></li> 
-									<li> Creado por: <%= productos[i].usuarioCreadores.nombre_usuario %></li>
+									<li> Creado por: <a href="/users/profile/<%=productos[i].usuarioCreadores.id%>"><%= productos[i].usuarioCreadores.nombre_usuario %></a></li>
 									<li><%= productos[i].descripcion %></li>
 									<li>Comentarios: <%=productos[i].comentarios.length%></li>
 								</ul>

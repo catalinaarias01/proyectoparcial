@@ -27,10 +27,12 @@
 							</figure>
 							<article class="product-box_data">
 								<h2><%= productos[i].nombre_producto %></h2>
-								<p> Marca: <%= productos[i].marca %></p>
-								
-								<p><%= productos[i].descripcion %></p>
-								
+								<ul>
+									<li> Marca: <%= productos[i].marca %></li>
+									<li><%= productos[i].descripcion %></li>
+									<li>Creado por: <a href="/users/profile/<%=productos[i].usuarioCreadores.id%>"><%=productos[i].usuarioCreadores.nombre_usuario%></a></li>
+									<li>Comentarios:<%=productos[i].comentarios.length%></li>
+								 </ul>
 							</article>
 						</a>
 					</section>

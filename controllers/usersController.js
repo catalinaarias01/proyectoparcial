@@ -167,7 +167,7 @@ let usersController = {
         }) */
             usuarios.findAll({
             where:[{ id : userID}],
-            include:["productos", "productosCreados","comentarios"]
+            include:["productosCreados","comentarios","productos"]
             })
             .then(resultado=>{
                     res.render('profile', {usuario:resultado[0], productos:resultado[0].productosCreados, productosLikeados:resultado[0].productos, comentariosUsuario:resultado[0].comentarios});
@@ -180,7 +180,7 @@ let usersController = {
         },
         edit: (req, res) =>{
             if(req.session.usuario != undefined){
-                return res.render('/profile-edit')
+                return res.render('profile-edit')
             } else {
                 return res.render('login')
             }
@@ -278,7 +278,7 @@ let usersController = {
         
     },
 
-        usersId: {
+      /*   usersId: {
             index: (req, res) => {    
                 const userId = req.params.id;
                 usuarios.findAll({
@@ -306,7 +306,7 @@ let usersController = {
     
         },
         
-    },
+    }, */
    
 }
 

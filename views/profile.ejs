@@ -63,12 +63,12 @@
 									<img src="/images/products/<%= productos[i].img_url %>" alt="producto">
 								</figure>
 								<article class="product-box_data">
-									<ul>
 									<h2><%= productos[i].nombre_producto %></h2>
-									<li> Marca: <%= productos[i].marca %></li>
-									<li><%= productos[i].descripcion %></li>
-									<li>Comentarios:</li>
-								</ul>
+									<ul>
+										<li> Marca: <%= productos[i].marca %></li>
+										<li><%= productos[i].descripcion %></li>
+									<!-- 	<li>Comentarios:</li> -->
+									</ul>
 								</article>
 							</a>
 						</section>
@@ -93,16 +93,11 @@
 								</figure>
 								<article class="product-box_data">
 									<h2><%= productosLikeados[i].nombre_producto %></h2><br>
-<<<<<<< HEAD
-									<p> Marca: <%= productosLikeados[i].marca %></p><br>
-									<p><%= productosLikeados[i].descripcion %></p><br>
-=======
 									<ul>
-									<li> Marca: <%= productosLikeados[i].marca %></li><br>
-									<li><%= productosLikeados[i].descripcion %></li><br>
-									<li>Comentarios:</li>
-								</ul>
->>>>>>> 7dc4e84b727d8838832ef4893b444b243317fb1c
+										<li> Marca: <%= productosLikeados[i].marca %></li><br>
+										<li><%= productosLikeados[i].descripcion %></li><br>
+										<!-- <li>Comentarios:</li> -->
+									</ul>
 								</article>
 							</a>
 						</section>
