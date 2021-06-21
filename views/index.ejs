@@ -38,11 +38,11 @@
 							<article class="product-box_data">
 								<h2><%= productos[i].nombre_producto %></h2><br>
 								<ul>
-								<li> Marca: <%= productos[i].marca %></li> 
-								<li> Creado por: <%= productos[i].usuarioCreadores.nombre_usuario %></li>
-								<li><%= productos[i].descripcion %></li>
-								<li>Comentarios: <%=productos[i].comentarios.length%></li>
-							</ul>
+									<li> Marca: <%= productos[i].marca %></li> 
+									<li> Creado por: <%= productos[i].usuarioCreadores.nombre_usuario %></li>
+									<li><%= productos[i].descripcion %></li>
+									<li>Comentarios: <%=productos[i].comentarios.length%></li>
+								</ul>
 							</article>
 						</a>
 					</section>
@@ -58,18 +58,21 @@
 				<h2 class="products-title">Más comentados</h2>
 			</div>
 			
-			<% for(i=0;i < productos.length; i++){%>
+			<% for(i=0;i < productosComentados.length; i++){%>
 			<div class="col-12 col-sm-6 col-lg-3 product">
 				<section class="product-box">
-					<a href="/product/<%=productos[i].id%>">
+					<a href="/product/<%=productosComentados[i].id%>">
 						<figure class="product-box_image">
 							
-							<img src="/images/products/<%= productos[i].img_url %>" alt="producto">
+							<img src="/images/products/<%= productosComentados[i].img_url %>" alt="producto">
 						</figure>
 						<article class="product-box_data">
-							<h2><%= productos[i].nombre_producto%></h2><br>
-							<p><%= productos[i].descripcion%></p>
-							<p>Comentarios: 12</p>
+							<h2><%= productosComentados[i].nombre_producto%></h2><br>
+							<ul>
+								<li> Marca: <%= productosComentados[i].marca %></li> 
+								<li><%= productosComentados[i].descripcion %></li>
+								<li>Comentarios: <%=productosComentados[i].get("comentariosCount")%></li>
+							</ul>
 						</article>
 					</a>
 				</section>
