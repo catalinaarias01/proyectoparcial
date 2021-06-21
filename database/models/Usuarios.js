@@ -25,9 +25,11 @@ module.exports = (sequelize, dataTypes)=>{
         },
         edad: {
             type: dataTypes.TINYINT,
+            allowNull: false,
         },
         contraseña: {
             type: dataTypes.STRING,
+            allowNull: false,
         },
         created_at:{
               type: dataTypes.DATE,
@@ -42,11 +44,16 @@ module.exports = (sequelize, dataTypes)=>{
         img_usuario: {
             type: dataTypes.STRING,
         },
+        fecha_nacimiento: {
+            type: dataTypes.STRING,
+            allowNull:false,
+        },
     };
     let config = {
         tableName: "usuarios",
         timestamps: false,
-        underscored: true
+        underscored: true,
+        updated_at:"updateTimestamp"
     }
 
     const Usuarios = sequelize.define(alias, cols, config)

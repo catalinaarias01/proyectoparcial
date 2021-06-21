@@ -24,7 +24,7 @@
 				<% } %> 
 			</div>
 
-			<form method="POST" action="/users/profile/edit/<%= locals.id %> " enctype="multipart/form-data" >
+			<form method="POST" action="/users/edit" enctype="multipart/form-data" >
 				<div class="mb-3">
 					<label for="nuevaFoto" class="form-label">Cambiar Foto:</label>
 					<input type="file" class="form-control" id="nuevaFoto" name="img_usuario" value="<%=locals.img_usuario%>">

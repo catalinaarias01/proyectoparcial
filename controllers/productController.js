@@ -169,7 +169,11 @@ let productController = {
             if(req.session.usuario != undefined){
                 productos.findByPk(productID)
                 .then(resultadoProductos=>{
+                    if(resultadoProductos.usuario_id==req.session.usuario.id){
                     res.render('product-edit', {productos:resultadoProductos})
+                    }else{
+                    res.redirect(`/product/${productID}`)
+                    }
                 })
                 .catch(error=>{
                     console.log(error);
@@ -205,16 +209,25 @@ let productController = {
         },
         eliminar: (req, res) =>{
             let productID = req.params.id;
-            
-            cliente_productos.destroy({where:{producto_id:productID}})
-            .then(()=> {
-                comentarios.destroy({where:{producto_id:productID}})
-                .then(()=>{
-                    productos.destroy({where: {id: productID}})
-                    return res.redirect('/') 
+            productos.findByPk(productID)
+            .then(resultado=>{
+                if(resultado.usuario_id != req.session.usuario.id){
+                    res.redirect(`/product/${productID}`)
+                }else{
+                cliente_productos.destroy({where:{producto_id:productID}})
+                .then(()=> {
+                    comentarios.destroy({where:{producto_id:productID}})
+                    .then(()=>{
+                        productos.destroy({where: {id: productID}})
+                        return res.redirect('/') 
+                    })
+                    .catch(err => console.log(err))
                 })
-            })
-  
+                .catch(err => console.log(err))
+            }
+            
+          })  
+          .catch(err => console.log(err))
             
         },
         comment: (req,res) =>{

@@ -16,19 +16,18 @@
 	<section class="info-usuario container products-wrapper">
 		<div class="row">
 			<div class="img-container offset-3 col-2">
-					<img src="/images/users/<%= locals.img_usuario %> " alt="foto de perfil" class="foto-perfil">
+					<img src="/images/users/<%= usuario.img_usuario %> " alt="foto de perfil" class="foto-perfil">
 			</div>
 			<div class="data-container col-6">
 				<div class="d-flex align-items-center ">
 					<h1 class="main-title"> 
-						<% if (locals.nombre){%>
-							<%=locals.nombre + " " + locals.apellido  %>
-						<%}%>
-						<a href="/users/profile/edit/<%= locals.id%>">
-							<i class="fas fa-cog"></i>
-						</a>
+							<%=usuario.nombre + " " + usuario.apellido  %>
+							<% if (locals.id==usuario.id) { %>
+								<a href="/users/edit">
+									<i class="fas fa-cog"></i>
+								</a>
+							<%}%>
 					</h1>
-					<a class="btn mt-3 ml-4" href="">SEGUIR</a>
 				</div>
 				<div>
 					<ul class="">
@@ -36,8 +35,10 @@
 					
 						<li>Comentarios:<%=comentariosUsuario.length%></li>
 					</ul>
-					<p><b>Mail:</b> <%=locals.mail%> <b>Edad:</b> <%=locals.edad%></p>
-					<p></p>
+					<p><b>Usuario:</b> <%=usuario.nombre_usuario%> </p>
+					<p><b>Mail:</b> <%=usuario.mail%> </p>
+					<p><b>Edad:</b> <%=usuario.edad%></p>
+					<p><b>Cumpleaños:</b> <%=usuario.fecha_nacimiento%></p>
 				</div>
 			</div>
 		</div>
@@ -48,9 +49,9 @@
 	
 	<div class= "container products-wrapper">
 		<div class="row">
-			<div class="col-12"><h2 class="products-title">Mis productos</h2></div>
+			<div class="col-12"><h2 class="products-title"><%= locals.id == usuario.id ? "Mis": "Sus" %> productos</h2></div>
 			<% if (productos.length == 0){%>
-				<h2>No has creado ningun producto.</h2>
+				<h2>No <%= locals.id == usuario.id ? "has": "ha" %> creado ningun producto.</h2>
 
 			<%} else{ %>
 
@@ -76,9 +77,9 @@
 		</div>
 	
 		<div class="row">
-			<div class="col-12"><h2 class="products-title">Mis productos favoritos</h2></div>
+			<div class="col-12"><h2 class="products-title"><%= locals.id == usuario.id ? "Mis": "Sus" %> productos favoritos</h2></div>
 			<% if (productosLikeados.length == 0){%>
-				<h2>No has likeado ningun producto.</h2>
+				<h2>No <%= locals.id == usuario.id ? "has": "ha" %> likeado ningun producto.</h2>
 
 			<%} else{ %>
 
@@ -93,7 +94,6 @@
 									<h2><%= productosLikeados[i].nombre_producto %></h2><br>
 									<p> Marca: <%= productosLikeados[i].marca %></p><br>
 									<p><%= productosLikeados[i].descripcion %></p><br>
-									<p>Comentarios:</p>
 								</article>
 							</a>
 						</section>

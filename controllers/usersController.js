@@ -9,6 +9,7 @@ const cliente_productos = db.Cliente_productos;
 const usuarios = db.Usuarios;
 const bcrypt = require('bcryptjs');
 const { localsName } = require('ejs');
+const { PreconditionFailed } = require('http-errors');
 
 
 const op = db.Sequelize.Op;
@@ -91,7 +92,8 @@ let usersController = {
                             nombre_usuario:req.body.usuario,
                             edad:req.body.edad,
                             contraseña: bcrypt.hashSync(req.body.contraseña, 10),
-                            img_usuario: "perfil.jpeg"
+                            img_usuario: "perfil.jpeg",
+                            fecha_nacimiento:req.body.fecha_nacimiento,
                         }
                         console.log(usuario)
                         usuarios.create(usuario)
@@ -157,15 +159,18 @@ let usersController = {
 
     profile: {
         index: (req, res) =>{
+            const  userID = req.params.id
            /* const username = req.body.usuario;*/
-           usuarios.findAll({
+           /* usuarios.findAll({
             where:[{ id : req.session.usuario.id}],
             include:["productos", "productosCreados","comentarios"]
-        })
+        }) */
+            usuarios.findAll({
+            where:[{ id : userID}],
+            include:["productos", "productosCreados","comentarios"]
+            })
             .then(resultado=>{
-
-                    console.log(resultado[0].comentarios)
-                    res.render('profile', {productos:resultado[0].productosCreados, productosLikeados:resultado[0].productos, comentariosUsuario:resultado[0].comentarios});
+                    res.render('profile', {usuario:resultado[0], productos:resultado[0].productosCreados, productosLikeados:resultado[0].productos, comentariosUsuario:resultado[0].comentarios});
             })
 
             .catch(error=>{
@@ -174,24 +179,27 @@ let usersController = {
             })
         },
         edit: (req, res) =>{
-
-            res.render('profile-edit')
+            if(req.session.usuario != undefined){
+                return res.render('/profile-edit')
+            } else {
+                return res.render('login')
+            }
         },
         store: (req,res) =>{
-            
-            let userId = req.params.id;
+    
             let usuario = {
-                id:req.session.id,
+                id:req.session.usuario.id,
                 nombre: req.body.nombre,
                 apellido: req.body.apellido,
                 mail:req.body.mail,
-                nombre_usuario: req.body.nombre_usuario,                                         
-                edad: req.body.edad,
-                contraseña:bcrypt.hashSync(req.body.contraseña, 10),
-                img_usuario:req.file.filename,
+                nombre_usuario: req.body.nombre_usuario,                                       
+                edad:req.body.edad,
+                contraseña:req.body.contraseña.length == 0 ? req.session.usuario.contraseña : bcrypt.hashSync(req.body.contraseña, 10),
+                img_usuario:req.file==undefined? req.session.usuario.img_usuario : req.file.filename,
+                fecha_nacimiento:req.session.usuario.fecha_nacimiento
             } 
             let errors = {};
-            if (req.body.contraseña.length <4) {
+            if (req.body.contraseña.length <4 && req.body.contraseña.length > 0) {
                     errors.edit = "La nueva contraseña debe tener más 3 caracteres";
                     res.locals.errors = errors;
                     return res.render('profile-edit') 
@@ -201,27 +209,26 @@ let usersController = {
                     return res.render('profile-edit') 
             }else{
 
-            usuarios.update(
-                {
-                    nombre: req.body.nombre,
-                    apellido: req.body.apellido,
-                    mail:req.body.mail,
-                    nombre_usuario: req.body.nombre_usuario,
-                    edad: req.body.edad,
-                    contraseña:bcrypt.hashSync(req.body.contraseña, 10),
-                    img_usuario:req.file.filename,
-                },
-                {
-                where:{id:req.session.id},
-                },
-                )
-                .then(()=>{
-                
-                        req.session.usuario = usuario;
-                        res.redirect(`/users/profile`)
-                    
-                })
-                .catch(err => console.log(err))
+                usuarios.update(
+                    {
+                        nombre: req.body.nombre,
+                        apellido: req.body.apellido,
+                        mail:req.body.mail,
+                        nombre_usuario: req.body.nombre_usuario,                                       
+                        edad:req.body.edad,
+                        contraseña:req.body.contraseña.length == 0 ? req.session.usuario.contraseña : bcrypt.hashSync(req.body.contraseña, 10),
+                        img_usuario:req.file==undefined? req.session.img_usuario : req.file.filename
+                    },
+                    {
+                    where:{id:req.session.usuario.id},
+                    },
+                    )
+                    .then(()=>{
+                            req.session.usuario = usuario;
+                            res.redirect(`/users/profile/${req.session.usuario.id}`)
+                        
+                    })
+                    .catch(err => console.log(err))
             }
         }
 

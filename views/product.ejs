@@ -46,7 +46,7 @@
 							<% } %> 
 					<% } %> 
 					<p class="product-detail-description">Likeado por <%= usuariosLike.length%> persona<%= usuariosLike.length == 1  ? "" : "s" %> </p> 
-					<p class="product-detail-description"><b>Cargado por: </b><a href="/users/<%=productos.usuarioCreadores.id%>"><%=productos.usuarioCreadores.nombre_usuario%></a></p>
+					<p class="product-detail-description"><b>Cargado por: </b><a href="/users/profile/<%=productos.usuarioCreadores.id%>"><%=productos.usuarioCreadores.nombre_usuario%></a></p>
 					<p class="product-detail-description"><%= productos.descripcion%></p>
 				</article>
 				<div class="col-12 col-lg-4">
@@ -66,7 +66,7 @@
 								<img src="/images/users/<%=usuarios[productos.comentarios[i].usuario_id].img_usuario%>" alt="">
 										<div class="data">
 											<p class="user">
-												<strong> <a href="/users/<%=productos.comentarios[i].usuario_id%>"><%=usuarios[productos.comentarios[i].usuario_id].nombre_usuario%></a></strong>
+												<strong> <a href="/users/profile/<%=productos.comentarios[i].usuario_id%>"><%=usuarios[productos.comentarios[i].usuario_id].nombre_usuario%></a></strong>
 												<%=productos.comentarios[i].texto%>
 											</p>
 										</div>
