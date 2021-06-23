@@ -463,6 +463,12 @@ form.eliminar{
   font-family: "Sen";
 }
 
+.fecha-comentario{
+  font-family: "Sen";
+  font-size: 0.8em;
+  color:grey;
+}
+
 a{
   font-family: "Cormorant SC";
 }
