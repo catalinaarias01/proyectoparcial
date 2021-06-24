@@ -279,7 +279,11 @@ hr {
 form.eliminar{
   background-color: white;
 }
-
+h2.products-rostro {
+  text-transform: capitalize;
+  text-align: center;
+  font-size:xx-large;
+}
 /*====== Footer ======*/
 .main-footer {
   background-color: #fcccd4;
