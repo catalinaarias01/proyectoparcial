@@ -66,6 +66,7 @@
 											<p class="user">
 												<strong> <a href="/users/profile/<%=productos.comentarios[i].usuario_id%>"><%=usuarios[productos.comentarios[i].usuario_id].nombre_usuario%></a></strong>
 												<%=productos.comentarios[i].texto%>
+												<p class="fecha-comentario"><%=productos.comentarios[i].created_at.toLocaleDateString('es-AR')%> a las <%=productos.comentarios[i].created_at.toLocaleTimeString('es-AR',{hour: '2-digit', minute:'2-digit'})%></p>
 											</p>
 										</div>
 							</article>

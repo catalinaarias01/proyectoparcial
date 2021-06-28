@@ -256,7 +256,11 @@ hr {
 form.eliminar{
   background-color: white;
 }
-
+h2.products-rostro {
+  text-transform: capitalize;
+  text-align: center;
+  font-size:xx-large;
+}
 /*====== Footer ======*/
 .main-footer {
   background-color: #fcccd4;
@@ -438,6 +442,12 @@ form.eliminar{
 .comments .user{
   font-size: 1.7em;
   font-family: "Sen";
+}
+
+.fecha-comentario{
+  font-family: "Sen";
+  font-size: 0.8em;
+  color:grey;
 }
 
 a{
