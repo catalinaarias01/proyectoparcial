@@ -23,7 +23,5 @@ router.get('/edit', usersController.profile.edit);
 router.post('/edit', upload.single('img_usuario'), usersController.profile.store);
 router.get('/register', usersController.register.index);
 router.post('/register', usersController.register.store);
-//router.get('/:id', usersController.usersId.index);
-
 
 module.exports = router;

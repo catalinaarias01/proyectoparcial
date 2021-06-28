@@ -1,7 +1,3 @@
-
-//const productos = require('../data/productos');
-//const usuarios = require('../data/usuarios');
-
 const db = require('../database/models');
 const productos = db.Productos;
 const comentarios = db.Comentarios;
@@ -18,7 +14,6 @@ let usersController = {
 
     register: {
         index: (req, res) =>{
-            //Control de acceso
             if(req.session.usuario != undefined){
                 return res.redirect('/')
             } else {
@@ -28,44 +23,43 @@ let usersController = {
         store: (req, res) =>{
 
             let errors = {};
-            //chequear los campos obligatorios
             
-            if(req.body.nombre == ""){ // El nombre no debe esta vacio
+            if(req.body.nombre == ""){ 
                 errors.register = "Nombre no puede estar vacio"
                 res.locals.errors = errors
     
                 return res.render('register')
-            }else if(req.body.apellido == ""){ // El apellido no debe esta vacio
+            }else if(req.body.apellido == ""){ 
                 errors.register = "Apellido no puede estar vacio"
                 res.locals.errors = errors
         
                 return res.render('register')    
-            }else if(req.body.email == ""){ // El mail no debe esta vacio
+            }else if(req.body.email == ""){ 
                 errors.register = "Email no puede estar vacio"
                 res.locals.errors = errors
     
                 return res.render('register')
-            }else if(req.body.usuario == ""){ // El usuario no debe esta vacio
+            }else if(req.body.usuario == ""){ 
                 errors.register = "Usuario no puede estar vacio"
                 res.locals.errors = errors
         
                 return res.render('register')
-            }else if(req.body.edad == ""){ // La edad no debe esta vacia
+            }else if(req.body.edad == ""){ 
                 errors.register = "Edad no puede estar vacio"
                 res.locals.errors = errors
         
                 return res.render('register')
-            } else if (req.body.contraseña == ""){ // El password no este vacio
+            } else if (req.body.contraseña == ""){ 
                 errors.register = "Contraseña no puede estar vacio"
                 res.locals.errors = errors
     
                 return res.render('register')
-            } else if (req.body.contraseña.length < 4){ // El password no este vacio
+            } else if (req.body.contraseña.length < 4){ 
                 errors.register = "Contraseña debe tener más de 3 caracteres"
                 res.locals.errors = errors
     
                 return res.render('register')
-            }else if(req.body.repetir == ""){
+            }else if(req.body.repetir == ""){ 
                 errors.register = "Re escribir contraseña no puede estar vacio"
                 res.locals.errors = errors
     
@@ -112,7 +106,6 @@ let usersController = {
 
     login: {
         index: (req, res) =>{
-              //Control de acceso
               if(req.session.usuario != undefined){
                 return res.redirect('/')
             } else {
@@ -121,10 +114,8 @@ let usersController = {
             
         },
         logueado: (req,res)=>{
-            // Variable para guardar errores
             let errors = {};
         
-            // Buscar el usuario por medio del mail
             usuarios.findOne({
                 where: [{mail: req.body.email}]
             })
@@ -160,11 +151,7 @@ let usersController = {
     profile: {
         index: (req, res) =>{
             const  userID = req.params.id
-           /* const username = req.body.usuario;*/
-           /* usuarios.findAll({
-            where:[{ id : req.session.usuario.id}],
-            include:["productos", "productosCreados","comentarios"]
-        }) */
+
             usuarios.findAll({
             where:[{ id : userID}],
             include:["productosCreados","comentarios","productos"]
@@ -231,83 +218,7 @@ let usersController = {
                     .catch(err => console.log(err))
             }
         }
-
-        /*let errors = {};
-
-        let userId = req.params.id;
-
-        if (req.body.nombre==req.session.usuario.nombre) {
-            errors.edit = "Tu nuevo nombre debe ser diferente al anterior";
-            res.locals.error = errors;
-            return res.render('profile-edit') 
-        } else if (req.body.apellido==req.session.usuario.apellido) {
-            errors.edit = "Tu nuevo apellido debe ser diferente al anterior";
-            res.locals.error = errors;
-            return res.render('profile-edit') 
-        } else if (req.body.edad==req.session.usuario.edad) {
-            errors.edit = "Tu nueva edad debe ser diferente a la anterior";
-            res.locals.error = errors;
-            return res.render('profile-edit')
-        } else if (req.body.mail==req.session.usuario.mail) {
-            errors.edit = "Tu nuevo email debe ser diferente al anterior";
-            res.locals.error = errors;
-            return res.render('profile-edit')
-        } else if (req.body.nombre_usuario==req.session.usuario.nombre_usuario) {
-            errors.edit = "Tu nuevo usuario debe ser diferente al anterior";
-            res.locals.error = errors;
-            return res.render('profile-edit')
-        } else{usuarios.update(
-            {
-                nombre: req.body.nombre,
-                apellido: req.body.apellido,
-                mail:req.body.mail,
-                nombre_usuario: req.body.nombre_usuario,
-                edad: req.body.edad,
-                //contraseña:bcrypt.hashSync(req.body.contraseña, 10),
-                img_usuario:req.file.filename,
-            },
-            {
-            where:{id:userId},
-            },
-            )
-            .then(()=> res.redirect(`/users/profile`))
-            .catch(err => console.log(err))
-    
-        } console.log(errors)
-    } */     
-        
     },
-
-      /*   usersId: {
-            index: (req, res) => {    
-                const userId = req.params.id;
-                usuarios.findAll({
-                    where:[{ id : userId}],
-                    include:[{model:productos, as:"productosCreados", include:["comentarios"]}]
-                })
-                    .then(resultado=>{
-                        comentarios.findAll({
-                            where:[{usuario_id:req.params.id}]
-                        })
-                        .then(resultadoComentarios=>{
-                            res.render('user-profile', {usuario:resultado, comentarios:resultadoComentarios})
-                        })
-                       
-                    })
-                    .catch(error=>{
-                        console.log(error);
-                        res.send(`El error es ${error}`)
-                    })
-                    .catch(error=>{
-                        console.log(error);
-                        res.send(`El error es ${error}`)
-                    })
-                //usuariosConId = usuarios.filter(usuario => usuario.id == userId)
-    
-        },
-        
-    }, */
-   
 }
 
 

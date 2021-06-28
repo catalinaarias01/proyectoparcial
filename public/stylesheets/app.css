@@ -235,24 +235,6 @@ hr {
   font-family: "Sen";
 }
 
-/* .product-box_data i {
-  color: var(--green);
-  font-size: 1.8em;
-  width: 35px;
-  height: 35px;
-  text-align: center;
-  border: solid 1px;
-  border-radius: 50%;
-  position: absolute;
-  top: -15px;
-  right: 15px;
-  background-color: #ffffff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: 300ms;
-} */
-
 .noproducts {
   text-align: center
 }
@@ -265,11 +247,6 @@ hr {
   height: 45px;
   margin-top: 15px;
 }
-
-/* .product-box:hover li {
-  transform: rotate(360deg);
-  box-shadow: 0 0 5px var(--green);
-} */
 
 .eliminar{
   width: 60%;

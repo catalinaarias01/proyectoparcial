@@ -1,4 +1,3 @@
-//const productos = require('../data/productos');
 const db = require('../database/models');
 const productos = db.Productos;
 const comentarios = db.Comentarios;
@@ -49,8 +48,6 @@ let productController = {
         productos.findByPk(productId,{
             include:["comentarios","usuarioCreadores","usuarios"],
             order:[["comentarios",'created_at','desc']],
-            //order: [[comentarios, 'created_at', 'desc']],
-            
         })
         .then(resultado=>{
             usuarios.findAll()
@@ -58,52 +55,6 @@ let productController = {
               res.render("product",{productos:resultado, usuarios:usuarios, usuariosLike:resultado.usuarios})
             })
         })
-        /*const productID = req.params.id;
-        cliente_productos.findAll({
-            where:[{producto_id:productID}]
-        })
-        .then(resultadoUsuarioProducto=>{
-            const usuarioProducto = resultadoUsuarioProducto[0];
-
-            usuarios.findByPk(usuarioProducto.usuario_id)
-        .then(resultadoUsuarioProducto =>{
-
-                productos.findByPk(productID)
-                .then(resultadoProductos=>{
-                    comentarios.findAll({
-                        where:[{producto_id:resultadoProductos.id}],
-                         include:[{
-                            model:usuarios,
-                        }] 
-                    })
-                        .then(resultadoComentarios=>{
-                            console.log(resultadoComentarios[0].Usuario)
-                                usuarios.findAll()
-                                .then(resultadoUsuarios=>{
-                                    res.render('product', {productos:resultadoProductos, comentarios:resultadoComentarios,  usuarioProducto:resultadoUsuarioProducto, usuariosComentan:resultadoUsuarios})
-                                })
-                        })
-        })
-                        .catch(error=>{
-                            console.log(error)
-                            res.send(`El error es ${error}`)
-                        })
-                })
-                .catch(error=>{
-                    console.log(error);
-                    res.send(`El error es ${error}`)
-                })
-                
-            })
-            .catch(error=>{
-                console.log(error);
-                res.send(`El error es ${error}`)
-            })
-
-/*         const productosConId = productos.filter(producto=>producto.id==productID)
-        const respuestaComentarios = productos.filter(producto=>producto.comentariosUsuario)
-
-        res.render('product', {productos:productosConId, comentarios:respuestaComentarios}) */
     },
 
     search: (req,res) =>{
@@ -125,38 +76,6 @@ let productController = {
                 console.log(error);
                 res.send(`El error es ${error}`)
             }) 
-            
-        /* productos.findAll({where: {
-            nombre_producto: {[op.like]: `%${searchResults}%`}
-        }})
-        .then(resultadoProductos=>{
-            productos.findAll({where: {
-                marca: {[op.like]: `%${searchResults}%`}
-            }})
-                .then(resultadoMarcas=>{
-                    productos.findAll({where: {
-                        descripcion: {[op.like]: `%${searchResults}%`}
-                    }})
-                    .then(resultadoDescripcion=>{
-
-                        res.render('search-results', {productos:resultadoProductos, marcas:resultadoMarcas, descripcion:resultadoDescripcion})
-                    })
-                    .catch(error=>{
-                        console.log(error)
-                        res.send(`El error es ${error}`)
-                    })
-                })
-                .catch(error=>{
-                    console.log(error);
-                    res.send(`El error es ${error}`)
-                })
-                
-            })
-            .catch(error=>{
-                console.log(error);
-                res.send(`El error es ${error}`)
-            })
-         */
     }, 
 
         add: (req, res) =>{
@@ -204,9 +123,6 @@ let productController = {
             } else {
                 return res.redirect(`/product/${productID}`)
             }
-            //const productosConId = productos.filter(producto=>producto.id==productID)
-
-            //res.render('product-edit', {productos:productosConId})
         },
         update: (req, res)=>{   
             
